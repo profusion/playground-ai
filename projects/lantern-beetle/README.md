@@ -97,6 +97,7 @@ still win.
 | `SPEC.md` | The specification index. |
 | `specs/` | The linked contracts: the model, the page, and the player journey. |
 | `IMPROVEMENT.md` | The rough edge found by playing, the alternatives, and the fix that was chosen. |
+| `DEMO.md` | The product story, the demo narration script, and the recording and Slack status. |
 
 ## Known limitations
 
