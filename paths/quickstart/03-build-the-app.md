@@ -10,8 +10,10 @@ depends_on:
 
 ## Goal
 
-Implement, test, and document the application described by `PROJECT.md` and
-`SPEC.md`, and leave the agent a measurement it can run itself.
+Implement, test, and document the application described by
+`projects/<project-name>/PROJECT.md` and `projects/<project-name>/SPEC.md`,
+and leave the agent a measurement it can run itself. Keep every project file
+inside that directory.
 
 ## Instructions
 
@@ -20,7 +22,7 @@ Build in small, verifiable increments and run relevant checks after each
 increment.
 
 Do not expand the product scope while building. If the specification is
-missing a necessary decision, update `SPEC.md` and record why.
+missing a necessary decision, update `projects/<project-name>/SPEC.md` and record why.
 
 The finished application must include setup and run instructions for someone
 who did not participate in the build.
@@ -48,7 +50,7 @@ these ways:
 1. Use `/goal` with an objective that names the behavior to prove and the exact
    command that proves it. `/goal` has no time limit. It continues until that
    measurement passes.
-2. Write the same loop into `app/AGENTS.md`: how to start the app, the
+2. Write the same loop into `projects/<project-name>/AGENTS.md`: how to start the app, the
    measurement command, and the rule that the agent reruns that command after
    every change that can affect the workflow.
 
@@ -58,39 +60,42 @@ process started or a file exists.
 
 ### Show the working application
 
-Open a pull request from `learners/<github-login>` into `main`. Record a video
-of the primary workflow working and put that video in the pull request
-description. A screenshot or a link the reviewer cannot play does not count.
+Open a pull request into `<github-login>/main`. The head branch contains the
+application work. The base is `<github-login>/main`, not the repository `main`.
+Record a video of the primary workflow working and put that video in the pull
+request description. A screenshot or a link the reviewer cannot play does not
+count.
 
 ## Deliverables
 
-- Application source code in `app/`.
+- Application source code in `projects/<project-name>/`.
 - Automated tests for the primary workflow and important edge cases.
-- Setup, run, test, and measurement instructions in `app/README.md`.
-- `app/AGENTS.md` with the start, measure, and rerun instructions.
-- Any justified specification updates in `SPEC.md`.
-- A pull request into `main` whose description contains a video of the primary
-  workflow.
+- Setup, run, test, and measurement instructions in `projects/<project-name>/README.md`.
+- `projects/<project-name>/AGENTS.md` with the start, measure, and rerun instructions.
+- Any justified specification updates in `projects/<project-name>/SPEC.md`.
+- A pull request into `<github-login>/main` whose description contains a video
+  of the primary workflow.
 
 ## Acceptance criteria
 
-- [ ] The application implements every in-scope requirement in `SPEC.md`.
-- [ ] A new contributor can install and run it by following `app/README.md`.
+- [ ] The application implements every in-scope requirement in `projects/<project-name>/SPEC.md`.
+- [ ] A new contributor can install and run it by following `projects/<project-name>/README.md`.
 - [ ] The primary workflow works end to end.
 - [ ] Automated tests cover the primary workflow and key failure states.
 - [ ] The agent ran `curl`, Playwright CLI, an agent browser, or a purpose-built
       tool against the running application.
 - [ ] That measurement checks the primary workflow and its saved output shows
       the pass result.
-- [ ] `app/README.md` gives the exact command to repeat the measurement.
-- [ ] `app/AGENTS.md` tells an agent how to start the app, measure it, and rerun
+- [ ] `projects/<project-name>/README.md` gives the exact command to repeat the measurement.
+- [ ] `projects/<project-name>/AGENTS.md` tells an agent how to start the app, measure it, and rerun
       the measurement after each relevant change.
 - [ ] The completion record quotes the `/goal` objective, including the behavior
       to prove and the measurement command.
 - [ ] Formatting, linting, type checking, and tests pass when supported by the
       chosen stack.
 - [ ] No credentials or generated local secrets are committed.
-- [ ] A pull request from `learners/<github-login>` into `main` is open.
+- [ ] A pull request into `<github-login>/main` is open. Its base is not the
+      repository `main`.
 - [ ] The pull request description contains a playable video of the primary
       workflow working.
 

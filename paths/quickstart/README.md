@@ -1,8 +1,9 @@
 # Quickstart
 
-The required onboarding path takes a product from idea to working application.
-It is intentionally technology-neutral: learners choose an idea first, define
-what success means, and only then select tools and build.
+The required onboarding path starts one project and takes it from idea to
+working application. It is intentionally technology-neutral: learners choose an
+idea first, define what success means, and only then select tools and build.
+Later routes may polish this same project or start a different one.
 
 ## Tasks
 

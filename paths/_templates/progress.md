@@ -1,7 +1,7 @@
 # <path>
 
 Learner: <login>
-Branch: learners/<login>
+Branch: <login>/main
 
 | Task | Title | Status | Issue | Updated |
 | --- | --- | --- | --- | --- |

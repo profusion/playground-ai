@@ -35,6 +35,6 @@ gh issue create \
 Start <task_id>
 ```
 
-9. Push `learners/<login>` with upstream tracking. Never push `main` or use `--force`.
+9. Push `<login>/main` with upstream tracking. Never push the repository `main` or use `--force`. If `<login>/main` does not exist, stop and tell the learner to run `/start-journey`.
 
 Return the selected route, task path, progress-file path, and issue URL. Do not modify the task file or begin implementation unless the learner also asks to start the work.

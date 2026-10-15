@@ -37,7 +37,7 @@ gh issue close <number> --comment "<completion record>"
 Complete <task_id>
 ```
 
-10. Push `learners/<login>`. Never push `main` or use `--force`.
+10. Push `<login>/main`. Never push the repository `main` or use `--force`. If `<login>/main` does not exist, stop and tell the learner to run `/start-journey`.
 
 Return the closed issue URL and progress-file path. Name the next task on that route, or say the route is complete. Tell the learner to run `/start-task` when they want to continue.
 

@@ -17,7 +17,9 @@ stays on your own branch, and each path keeps a progress file there.
 6. Run `/complete`.
 7. Repeat steps 4–6 until Quickstart is done.
 
-You never name the task. Your branch is `learners/<your-github-login>`.
+If you are unsure where you are, run `/mentor`.
+
+You never name the task. Your branch is `<your-github-login>/main`. Pull requests target that branch.
 
 ## Start here
 
@@ -62,11 +64,13 @@ gh auth login
 3. Work with the agent until every acceptance criterion is satisfied.
 4. Ask your agent to run `/complete`.
 
-You do not name the task. `/start-task` checks your progress file, your current
-route, and your GitHub issues, then opens the next task on
-`learners/<your-github-login>`. `/complete` validates the task already in
-progress, marks it `completed`, and closes your issue. Both commands commit
-the progress file and push your learner branch. They do not push `main`.
+You do not name the task. `/start-journey` creates `<your-github-login>/main`
+only after you approve the commands. `/start-task` checks your progress file,
+your current route, and your GitHub issues, then opens the next task on that
+branch. `/complete` validates the task already in progress, marks it
+`completed`, and closes your issue. Both commands commit the progress file and
+push `<your-github-login>/main`. They do not push the repository `main`. Pull
+requests target `<your-github-login>/main`.
 
 ## Repository map
 
@@ -84,6 +88,8 @@ the progress file and push your learner branch. They do not push `main`.
 ├── progress/             # Created per learner and path on their branch
 │   └── <github-login>/
 │       └── quickstart.md
+├── projects/             # Created on the learner's main branch
+│   └── <project-name>/   # One folder per project; a route may reuse it
 ├── AGENTS.md             # Instructions for coding agents
 ├── CLAUDE.md -> AGENTS.md
 └── README.md             # Instructions for learners
@@ -96,8 +102,9 @@ locations Codex, Cursor, OpenCode, and Antigravity already read. Claude Code
 looks elsewhere, so `CLAUDE.md` and `.claude/skills` are symlinks to those same
 files rather than copies.
 
-Your agent may expose the skills as `/start-journey`, `/start-task`, and
-`/complete`. If it has no slash commands, ask for the skill by name.
+Your agent may expose the skills as `/start-journey`, `/start-task`,
+`/complete`, and `/mentor`. If it has no slash commands, ask for the skill by
+name. `/mentor` reads your progress and names the next step.
 
 ## Adding a learning path
 

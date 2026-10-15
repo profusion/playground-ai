@@ -19,7 +19,7 @@ agent.
 Run the application and complete its primary workflow yourself. Observe where
 the experience is confusing, slow, repetitive, fragile, or incomplete.
 
-Create `IMPROVEMENT.md` and record:
+Create `projects/<project-name>/IMPROVEMENT.md` and record:
 
 1. what you tried and what you observed
 2. at least three possible improvements
@@ -32,27 +32,28 @@ challenge your assumptions, and propose a small implementation plan. Make the
 change, test it, and use the application again to compare the result with your
 original observation.
 
-Reuse the measurement command from task 3. Extend `app/README.md` and
-`app/AGENTS.md` when the improvement changes what that command must observe.
+Reuse the measurement command from task 3. Extend `projects/<project-name>/README.md` and
+`projects/<project-name>/AGENTS.md` when the improvement changes what that command must observe.
 
-Update the task 3 pull request, or open a new pull request into `main`, with a
-video that shows the improved behavior working. A screenshot or the original
-workflow video does not count.
+Update the task 3 pull request, or open a new pull request into
+`<github-login>/main`, with a video that shows the improved behavior working.
+The base is `<github-login>/main`, not the repository `main`. A screenshot or
+the original workflow video does not count.
 
-Update `SPEC.md` when the improvement changes product behavior. Avoid a broad
+Update `projects/<project-name>/SPEC.md` when the improvement changes product behavior. Avoid a broad
 rewrite or unrelated cleanup.
 
 ## Deliverables
 
-- `IMPROVEMENT.md`: Evidence, alternatives, selected improvement, and result.
-- A focused change to the application in `app/`.
+- `projects/<project-name>/IMPROVEMENT.md`: Evidence, alternatives, selected improvement, and result.
+- A focused change to the application in `projects/<project-name>/`.
 - Automated tests covering the changed behavior.
-- Updated `SPEC.md`, `app/README.md`, and `app/AGENTS.md` when behavior or the measurement changed.
-- A pull request into `main` whose description contains a video of the improved behavior.
+- Updated `projects/<project-name>/SPEC.md`, `README.md`, and `AGENTS.md` in that same directory when behavior or the measurement changed.
+- A pull request into `<github-login>/main` whose description contains a video of the improved behavior.
 
 ## Acceptance criteria
 
-- [ ] `IMPROVEMENT.md` describes an issue observed while using the application.
+- [ ] `projects/<project-name>/IMPROVEMENT.md` describes an issue observed while using the application.
 - [ ] It compares at least three possible improvements and justifies one choice.
 - [ ] The implementation addresses the selected issue without unrelated scope.
 - [ ] Tests demonstrate the expected behavior and pass.
@@ -63,7 +64,8 @@ rewrite or unrelated cleanup.
       chosen stack.
 - [ ] `IMPROVEMENT.md` explains the AI agent's contribution and one decision the
       learner made rather than delegating it.
-- [ ] A pull request into `main` contains the improvement.
+- [ ] A pull request into `<github-login>/main` contains the improvement. Its
+      base is not the repository `main`.
 - [ ] That pull request description contains a playable video of the improved
       application working.
 

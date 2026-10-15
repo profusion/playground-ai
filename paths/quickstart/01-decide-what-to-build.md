@@ -17,7 +17,12 @@ this playground.
 Work with your agent to explore a few ideas, then choose one. Keep the first
 version small: one target user, one core problem, and one primary workflow.
 
-Create `PROJECT.md` in the repository root. Describe:
+Choose a `<project-name>`: lowercase letters, numbers, and hyphens, taken from
+the product name. Create `projects/<project-name>/`. This route starts a new
+project. A later route may polish this same folder instead of creating another
+one. Do not put project files in the repository root.
+
+Create `projects/<project-name>/PROJECT.md`. Describe:
 
 1. the working product name
 2. the target user
@@ -30,10 +35,12 @@ the product decisions.
 
 ## Deliverables
 
-- `PROJECT.md`: A concise product brief.
+- `projects/<project-name>/PROJECT.md`: A concise product brief.
 
 ## Acceptance criteria
 
+- [ ] The brief lives at `projects/<project-name>/PROJECT.md`.
+- [ ] `<project-name>` is lowercase letters, numbers, and hyphens.
 - [ ] `PROJECT.md` names one target user.
 - [ ] It states one clear problem in plain language.
 - [ ] It describes one end-to-end primary workflow.

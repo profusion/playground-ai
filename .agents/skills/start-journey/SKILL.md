@@ -1,6 +1,6 @@
 ---
 name: start-journey
-description: Welcomes a learner to Playground AI, verifies the GitHub CLI, and confirms their Git commit name and @profusion.mobi email. Use when the learner invokes /start-journey or asks to begin, start, or enter the playground.
+description: Welcomes a learner to Playground AI, verifies the GitHub CLI and @profusion.mobi email, and creates their <login>/main branch after they approve the commands. Use when the learner invokes /start-journey or asks to begin, start, or enter the playground.
 compatibility: Requires git and the GitHub CLI (gh)
 disable-model-invocation: true
 metadata:
@@ -26,11 +26,11 @@ Show this banner first, in a code block, exactly as written. Then show the prose
 
 > There is a room in this repository that does not exist yet. It will have a name, a person it was made for, and a reason to be opened. You are the one who will decide those things. An agent can walk beside you, carry the tedious weight, and argue with your choices, but the invention remains yours. That is the bargain of Playground AI.
 >
-> The way through is written down. Each lesson is a page of Markdown. When you begin one, it becomes a GitHub issue with your name on it, a claim staked in public. Your work lives on a branch of your own, `learners/<your-github-login>`, and each path keeps a progress file, a record of where you have already been. When a lesson is truly finished, the issue closes and the file remembers that you passed.
+> The way through is written down. Each lesson is a page of Markdown. When you begin one, it becomes a GitHub issue with your name on it, a claim staked in public. Your road has its own main, `<your-github-login>/main`. Every pull request opens against that branch, never against the shared `main`. Each project lives in `projects/<project-name>/`. A later route may polish that same project, or start another one beside it. Each path also keeps a progress file, a record of where you have already been. When a lesson is truly finished, the issue closes and the file remembers that you passed.
 >
 > No one takes another road until they have walked the Quickstart. It has five stops. First you decide what to build. Then you write the specification, so the agent is not left to invent your intent. Next you build the thing and give the agent a measurement it can run itself, with `/goal` holding it to that proof. Then you use what you made, find the rough edge, and make it better. Last, you stand beside the finished work and narrate it, as you would for a client, and post that demo in `#dev-ai`.
 >
-> Two words move you from stop to stop. `/start-task` looks at your progress and your GitHub issues, then opens the next page. You do not name it. `/complete` tests the page already open and, if it holds, closes it. You are here because you asked to begin. Before the first step, the door asks for two things: a working GitHub CLI, and a commit identity that carries your `@profusion.mobi` email.
+> Two words move you from stop to stop. `/start-task` looks at your progress and your GitHub issues, then opens the next page. You do not name it. `/complete` tests the page already open and, if it holds, closes it. If you lose the path, `/mentor` reads the record and tells you the single next step. You are here because you asked to begin. An adventurer does not proceed without `<your-github-login>/main`. Before the first step, the door asks for a working GitHub CLI, a commit identity that carries your `@profusion.mobi` email, and your approval of the commands that create that branch.
 
 ## GitHub CLI
 
@@ -58,10 +58,39 @@ Show the learner both values and ask whether this is the name and email they wan
 - If either value is missing, the email is not a Profusion address, or the learner says either value is wrong, stop.
 - Ask them for the correct name and `@profusion.mobi` email, then tell them to set those values and run `/start-journey` again. Do not run `git config` yourself.
 
-When they confirm a name and an `@profusion.mobi` email, address the learner by their GitHub login and give the next command:
+## Personal main
+
+When they confirm a name and an `@profusion.mobi` email, the GitHub login is `<login>`. The learner cannot start Quickstart without the branch `<login>/main`. Later pull requests use that branch as their base. Never open a pull request against the repository `main`, and never push the repository `main`.
+
+Fetch `origin`.
+
+- If `<login>/main` already exists, check it out and fast-forward it. If the worktree is dirty, or the branch has diverged, stop and explain. Do not recreate it.
+- If it does not exist, show the exact commands below with `<login>` filled in. Then ask, in these words: "I will create a branch with these commands so we can start the quickstart journey. Do you approve?"
+
+```bash
+git fetch origin
+git checkout -b <login>/main origin/main
+mkdir -p projects
+cat > projects/README.md << 'EOF'
+# Projects
+
+Each project lives in `projects/<project-name>/`.
+A route may start a new project or polish one that already exists.
+A polishing route uses the existing folder. Do not put project files in the repository root.
+EOF
+git add projects/README.md
+git commit -m "Add the projects folder for this journey"
+git push -u origin HEAD
+```
+
+Wait for an explicit yes. If the learner does not approve, run nothing and stop. After approval, run only those commands.
+
+If `<login>/main` already exists but `projects/README.md` does not, show the `mkdir`, file, commit, and push commands and ask for approval with the same sentence. Do not add the folder without approval.
+
+When `<login>/main` exists locally and on `origin`, and `projects/README.md` is on it, address the learner by their GitHub login and give the next command:
 
 ```text
 /start-task
 ```
 
-Do not create a branch, issue, or progress file in this skill. Do not start the first task unless the learner asks for that too.
+Do not create an issue or progress file in this skill. Do not start the first task unless the learner asks for that too.

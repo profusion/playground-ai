@@ -15,7 +15,9 @@ implement without guessing at product behavior.
 
 ## Instructions
 
-Read `PROJECT.md` and create `SPEC.md`. Resolve ambiguous behavior with the
+Read `projects/<project-name>/PROJECT.md` and create `SPEC.md` in that same
+directory. This task continues that project. Do not create another folder.
+Resolve ambiguous behavior with the
 learner before selecting an implementation.
 
 Include:
@@ -33,7 +35,7 @@ trade-offs instead of presenting a choice as universally correct.
 
 ## Deliverables
 
-- `SPEC.md`: The product and technical specification.
+- `projects/<project-name>/SPEC.md`: The product and technical specification.
 
 ## Acceptance criteria
 
