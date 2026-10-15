@@ -1,41 +1,36 @@
 ---
 name: start-task
-description: Creates a GitHub issue from a learning task Markdown file and assigns it to the current GitHub user. Use when the learner invokes /start-task with a task path.
+description: Finds the learner's next task from progress files, the current route, and assigned GitHub issues, then starts it on the learner's branch. Use when the learner invokes /start-task. The learner does not name the task.
 disable-model-invocation: true
 ---
 
 # Start Task
 
-Start one curriculum task from its Markdown source.
-
-## Input
-
-Require one task file path, for example:
-
-```text
-/start-task paths/quickstart/01-decide-what-to-build.md
-```
+Start the task the learner is ready for. Do not ask the learner to choose a task file.
 
 ## Workflow
 
-1. Read the task and require valid `task_id`, `title`, `path`, and
-   `depends_on` frontmatter.
-2. Run `gh auth status` and `gh repo view`. If either fails, explain the exact
-   setup needed and stop.
-3. For every `depends_on` task ID, use GitHub CLI to confirm that its issue
-   exists and is closed. Stop and name any unmet prerequisite.
-4. Search open and closed issues for the exact `task_id`.
-5. If an issue already exists, return its URL instead of creating a duplicate.
-6. Create the issue from the task:
+1. Read `.cursor/skills/current-task.md` and use it to select the route and task.
+2. Read the selected task and require valid `task_id`, `title`, `path`, and `depends_on` frontmatter.
+3. If the selected task is already `in_progress`, return its task path and issue URL. Do not create another issue.
+4. Create `progress/<login>/<path>.md` from `paths/_templates/progress.md` when the route does not yet have one. List every task file in `paths/<path>/`, excluding `README.md`, in filename order.
+5. Confirm every `depends_on` task is `completed`. Stop and name any unmet prerequisite.
+6. Reuse the open issue assigned to `@me` whose body contains the exact `task_id`. Otherwise create one:
 
 ```bash
 gh issue create \
-  --title "<title from frontmatter>" \
+  --title "[<login>] <title from frontmatter>" \
   --body-file "<task file path>" \
   --assignee "@me"
 ```
 
-7. Return the issue URL and summarize the first action the learner should take.
+7. Set this task to `in_progress`, record the issue URL, and set `Updated` to today's date in `YYYY-MM-DD` form.
+8. Commit only the progress file when it changed:
 
-Do not modify the task file. Do not begin implementation unless the learner
-also asks to start the work.
+```text
+Start <task_id>
+```
+
+9. Push `learners/<login>` with upstream tracking. Never push `main` or use `--force`.
+
+Return the selected route, task path, progress-file path, and issue URL. Do not modify the task file or begin implementation unless the learner also asks to start the work.

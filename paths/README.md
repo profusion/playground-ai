@@ -13,8 +13,10 @@ learners.
 
 ## Rules
 
-1. Complete Quickstart first.
-2. Complete tasks in filename order unless a task says otherwise.
-3. Start each task with `/start-task`.
-4. Finish each task with `/complete`.
-5. A task is complete only when its acceptance criteria are verifiably true.
+1. Begin with `/start-journey`.
+2. Complete Quickstart first.
+3. Complete tasks in filename order unless a task says otherwise.
+4. Run `/start-task` on your `learners/<github-login>` branch. The agent chooses the task.
+5. Finish the task in progress with `/complete`.
+6. Track each path in `progress/<github-login>/<path>.md`.
+7. A task is complete only when its acceptance criteria are verifiably true and its progress status is `completed`.
