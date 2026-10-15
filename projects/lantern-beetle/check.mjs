@@ -232,8 +232,39 @@ check(8, 'setup errors', () => {
   return `${cases.length} impossible setups refused with their named reason; a valid 3x4 setup still builds`;
 });
 
-const failed = results.filter((result) => !result.ok);
-const width = Math.max(...results.map((result) => result.name.length));
+check(9, 'restart after a win', () => {
+  const game = LanternBeetle.createGame();
+  const idle = game.state();
+
+  for (let i = 0; i < 5; i += 1) game.move('down');
+  for (let i = 0; i < 6; i += 1) game.move('right');
+  assert(game.state().won === true, 'the setup for this check must win first');
+
+  const restarted = game.reset();
+  assert(restarted.won === false, `after a restart won must be false, got ${restarted.won}`);
+  assert(restarted.moves === 0, `after a restart moves must be 0, got ${restarted.moves}`);
+  assert(restarted.status === 'idle', `after a restart the status must be idle, got ${restarted.status}`);
+  deepEqual(restarted.beetle, idle.beetle, 'the beetle must return to its start cell');
+  deepEqual(restarted.lantern, idle.lantern, 'the lantern must not move');
+  deepEqual(restarted, idle, 'the restarted state must equal a fresh game');
+
+  for (let i = 0; i < 5; i += 1) game.move('down');
+  for (let i = 0; i < 6; i += 1) game.move('right');
+  const secondWin = game.state();
+  assert(secondWin.won === true, 'the lantern must be winnable again after a restart');
+
+  const again = LanternBeetle.canReach({
+    rows: restarted.rows,
+    cols: restarted.cols,
+    beetle: restarted.beetle,
+    lantern: restarted.lantern
+  });
+  assert(again.reachable === true, 'the lantern must be reachable again after a restart');
+
+  return `reset (what R calls on the won page) returned the idle start state, and a second run won again after ${secondWin.moves} moves; reachable in ${again.distance}`;
+});
+
+const failed = results.filter((result) => !result.ok);const width = Math.max(...results.map((result) => result.name.length));
 
 console.log('Lantern Beetle — measurement');
 console.log(`scenario: ${scenarioName}`);

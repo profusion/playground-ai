@@ -28,7 +28,9 @@ manager does the same thing, and so does any static file server — no server is
 required, because the page is opened straight from the file system.
 
 Then press the arrow keys. `Up`, `Down`, `Left`, and `Right` each move the beetle
-one cell; the edges block it silently.
+one cell; the edges block it silently. When the beetle reaches the lantern the win
+is announced, and the status line offers another run: press `R` to begin again on
+the same page, with no reload. Pressed before a win, `R` does nothing.
 
 ## Run the measurement
 
@@ -38,7 +40,7 @@ From the repository root:
 node projects/lantern-beetle/check.mjs
 ```
 
-Expected: eight `ok` lines and
+Expected: nine `ok` lines and
 
 ```text
 exit: 0 — the beetle can reach the lantern by legal moves
@@ -60,6 +62,7 @@ server, so it needs nothing running:
 | 6 win freeze | Every move after the win leaves the state untouched. |
 | 7 reachability | A breadth-first search finds the lantern in 11 legal moves, matching the walk in check 5. |
 | 8 setup errors | Five impossible setups are refused with their named reason. |
+| 9 restart after a win | `reset()` — what `R` calls on the won page — returns the idle start state, and a second run can be won again. |
 
 ### Prove that the measurement can fail
 
@@ -89,18 +92,20 @@ still win.
 | `logic.js` | The game rules. Pure: no DOM, no browser API, no network. |
 | `play.js` | Turns arrow keys into model moves and draws what the model reports. Owns no rules. |
 | `check.mjs` | The measurement above. |
-| `screenshots/` | Idle, playing, and won states of the page. |
+| `screenshots/` | Idle, playing, and won states of the page, plus the restart after a win. |
 | `PROJECT.md` | The product brief. |
 | `SPEC.md` | The specification index. |
 | `specs/` | The linked contracts: the model, the page, and the player journey. |
+| `IMPROVEMENT.md` | The rough edge found by playing, the alternatives, and the fix that was chosen. |
 
 ## Known limitations
 
 - Only the keyboard is supported. Touch and pointer input are out of scope for
   this version.
-- The beetle's start cell and the lantern's cell are fixed, so a second
-  playthrough is already solved. Random placement is a later quest, and it would
-  need a seed the checks can pin.
+- The beetle's start cell and the lantern's cell are fixed, so every run is the
+  same puzzle. The won board can be restarted with `R`, but replays are
+  identical; random placement is a later quest, and it would need a seed the
+  checks can pin.
 - The measurement covers the model, where the rules live. The page itself is
   checked by the manual steps in `specs/pages/play.spec.md`, section 6.
 - The status line is the announced channel for screen readers; the beetle's cell

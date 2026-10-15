@@ -132,10 +132,10 @@ is a property of the rules, not a hope: section 4 proves it mechanically.
 
 ## 4. How this behavior is verified
 
-A Node script named `check.mjs` in this folder is written in the build quest. It
-requires the model file directly — no browser, no server — and **fails loudly**:
-each check prints `ok` or `FAIL` with a reason, and the script exits non-zero if
-any check fails. Projected checks, each traceable to a rule above:
+A Node script named `check.mjs` in this folder requires the model file directly —
+no browser, no server — and **fails loudly**: each check prints `ok` or `FAIL` with
+a reason, and the script exits non-zero if any check fails. The checks, each
+traceable to a rule above:
 
 | # | Check | Passes when |
 | --- | --- | --- |
@@ -147,6 +147,7 @@ any check fails. Projected checks, each traceable to a rule above:
 | 6 | Win freeze | After the win, further moves leave the state deeply equal to the won state. (rule 6) |
 | 7 | Reachability by search | A breadth-first search over the walkable grid finds a path from the beetle's start to the lantern at the default size, and the found distance equals the number of accepted moves used by check 5. |
 | 8 | Setup errors | Each invalid setup in section 3 is refused with the named reason, and no model is created. |
+| 9 | Restart after a win | `game.reset()` returns the idle start state — `won` false, `moves` 0, status `idle`, beetle back on its start cell, lantern unmoved, deeply equal to a fresh game — and a second run can be won again. Added with the restart affordance in `IMPROVEMENT.md`, and it is what the page's `R` key calls. |
 
 Check 7 is the one the quest asks for in plain words: the script must show that
 the beetle *can* reach the lantern, rather than assume it. Checks 3 to 6 then show

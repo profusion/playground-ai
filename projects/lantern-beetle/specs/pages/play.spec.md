@@ -21,7 +21,9 @@ One page, one game, no menus:
    blocks it.
 6. When the beetle reaches the lantern, the page shows the win: the board takes a
    `won` appearance, the lantern brightens, and the status line announces
-   **You found the lantern.**
+   **You found the lantern. Press R to play again.**
+7. Pressing `R` from that won state returns the page to the start of a fresh run,
+   so the board can be won again without reloading the page.
 
 The page holds no rules. It asks the model where the beetle and lantern are and
 draws that answer.
@@ -46,6 +48,7 @@ shape and glyph, not by colour alone. The lantern's mark carries a glow.
 | Input | Handled | Rule |
 | --- | --- | --- |
 | `ArrowUp`, `ArrowDown`, `ArrowLeft`, `ArrowRight` | yes | One model move per press. Browser key auto-repeat is allowed, so holding a key walks the beetle. |
+| `R` or `r` | yes | Restarts the run, from the won state only. Pressed before a win it does nothing. It calls the model's `reset()`, so no rule lives in the page. |
 | Any other key | yes | Ignored. The model is not called and the page does not scroll. |
 | Mouse, touch, gamepad | no | Out of scope for this version, per [PROJECT.md](../../PROJECT.md). |
 
@@ -66,7 +69,7 @@ is open, with no click to focus a canvas first.
 | --- | --- | --- |
 | `idle` (empty state) | Page loaded, no move yet | Dark grid, beetle, lantern, hint line. |
 | `playing` | At least one accepted move, not won | Same, with the beetle elsewhere. |
-| `won` | The beetle reached the lantern | Win announcement, board takes the `won` appearance, lantern brighter. |
+| `won` | The beetle reached the lantern | Win announcement with the restart offer, board takes the `won` appearance, lantern brighter, and `R` is available. |
 | `error` | Setup refused, or the script did not load | A plain, readable message in the status line on the dark page. |
 
 ## 3. Errors, empty states, and permissions
@@ -155,13 +158,18 @@ evidence:
    cells.
 3. Press `ArrowUp` until the beetle sits on the top row, then press `ArrowUp`
    once more. Nothing moves, nothing breaks, no message appears.
-4. Press a letter key. Nothing happens and the page does not scroll.
+4. Press a key that is neither an arrow nor `R`, for example `a`. Nothing happens
+   and the page does not scroll.
 5. Walk the beetle to the lantern. The win is announced, the board changes, and
    further arrow keys change nothing.
-6. Rename `logic.js` and reload. The page shows *The lantern failed to light.*
+6. Press `R`. The board returns to the start of a fresh run: beetle on its start
+   cell, hint line restored, board no longer warm, lantern unmoved. Press `R`
+   again before winning and nothing happens.
+7. Win a second time without reloading the page.
+8. Rename `logic.js` and reload. The page shows *The lantern failed to light.*
    rather than a silent dark rectangle. Rename the file back.
 
-Automating steps 1 to 6 in a browser is deferred to a later quest; the model,
+Automating steps 1 to 8 in a browser is deferred to a later quest; the model,
 where the rules live, is covered by the script today.
 
 ## 7. Related specifications and journeys

@@ -37,10 +37,13 @@ Nothing is stored and nothing is asked of the player.
 On the move that places the beetle on the lantern:
 
 - the model reports `won`;
-- the page announces **You found the lantern.** in the status line;
+- the page announces **You found the lantern. Press R to play again.** in the
+  status line;
 - the board takes its `won` appearance and the lantern brightens;
 - the beetle is drawn on the lantern's cell, so the arrival is visible;
-- the game is over. Further arrow keys change nothing.
+- the game is over. Further arrow keys change nothing;
+- pressing `R` begins a fresh run on the same page, so this journey can be walked
+  again without a reload.
 
 The win is reachable from the default start in eleven accepted moves at the
 default 8×8 size, and the verification script proves that path exists.
@@ -56,6 +59,8 @@ default 8×8 size, and the verification script proves that path exists.
 | The model refuses the setup | A plain message naming the reason | The page fails visibly instead of pretending to play. |
 | `logic.js` fails to load | *The lantern failed to light.* | A silent dark page would look like a bug the player cannot act on. |
 | Arrows pressed after the win | Nothing changes | Winning is absorbing; the journey has ended. |
+| `R` pressed after the win | The board returns to the start of a fresh run | The won page must not be a dead end; this is the improvement recorded in `IMPROVEMENT.md`. |
+| `R` pressed before a win | Nothing happens | Restarting mid-run is a different feature, deliberately not added. |
 
 ## What this journey does not cover
 
