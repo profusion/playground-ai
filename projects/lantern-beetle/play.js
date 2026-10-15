@@ -79,13 +79,37 @@
   place(lantern, start.lantern);
   place(beetle, start.beetle);
 
+  var HINT_TEXT = 'Use the arrow keys to find the lantern.';
+  var WIN_TEXT = 'You found the lantern. Press R to play again.';
+
   var finished = start.won;
+
+  /* The won board is not a dead end: R begins a fresh run, with no reload. */
+  function restart() {
+    var next = game.reset();
+    finished = false;
+    board.classList.remove('won');
+    delete board.dataset.state;
+    status.textContent = HINT_TEXT;
+    delete status.dataset.state;
+    place(beetle, next.beetle);
+    place(lantern, next.lantern);
+  }
 
   document.addEventListener('keydown', function (event) {
     var direction = ARROW_DIRECTIONS[event.key];
+
+    if (finished) {
+      if (event.key === 'r' || event.key === 'R') {
+        restart();
+      } else if (direction) {
+        event.preventDefault();  /* arrows still must not scroll the won page */
+      }
+      return;
+    }
+
     if (!direction) return;      /* any other key is left to the page */
     event.preventDefault();      /* arrow keys must never scroll the page */
-    if (finished) return;        /* winning is absorbing */
 
     var next = game.move(direction);
     place(beetle, next.beetle);
@@ -94,7 +118,7 @@
       finished = true;
       board.classList.add('won');
       board.dataset.state = 'won';
-      status.textContent = 'You found the lantern.';
+      status.textContent = WIN_TEXT;
       status.dataset.state = 'won';
     }
     /* A blocked move changes nothing, so the hint line stays as it was. */

@@ -23,7 +23,7 @@ From the repository root:
 node projects/lantern-beetle/check.mjs
 ```
 
-It must print eight `ok` lines and `exit: 0 — the beetle can reach the lantern by
+It must print nine `ok` lines and `exit: 0 — the beetle can reach the lantern by
 legal moves`, with process exit code `0`. It drives the real model, so a broken
 rule makes it fail and name the broken thing.
 
@@ -52,6 +52,9 @@ proof, and its output belongs in the summary you leave behind.
   is what makes the measurement possible.
 - `play.js` wires the keyboard and the DOM to the model, and owns no rules. If a
   rule must change, change `logic.js` and the spec, not `play.js`.
+- The won state is not a dead end: `R` calls the model's `reset()` and repaints.
+  Keep that in the page — it is an affordance, not a rule — and keep it offered
+  only from the won state, as `IMPROVEMENT.md` records.
 - `logic.js` is a **classic script**: no `import` and no `export` syntax, because
   browsers refuse ES modules over `file://`. It exposes its API on
   `globalThis.LanternBeetle` and also assigns `module.exports`, so Node can
