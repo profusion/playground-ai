@@ -32,8 +32,9 @@ implemented beside this file, and this index still points at the contracts first
 
 ## Scope
 
-In scope: the dark grid, the beetle, the lantern, arrow-key movement, the win,
-the empty and error states, and the Node verification of reachability.
+In scope: the dark grid, the beetle, the lantern, arrow-key movement, the win, the
+restart from the won state, the empty and error states, and the Node verification
+of reachability.
 
 Out of scope, per [PROJECT.md](PROJECT.md): enemies, score, story, multiple
 levels, a timer, sound, saved progress, accounts, a backend, touch controls, and
@@ -46,4 +47,5 @@ Built and measured. The game lives in this folder: `index.html`, `styles.css`,
 `node check.mjs --blocked` proves that the same check fails when a path is
 blocked. `README.md` tells a newcomer how to start the page and run the
 measurement; `AGENTS.md` tells an agent to rerun it after every change that can
-affect the workflow.
+affect the workflow. The record of the quest that improved this version — the
+observed rough edge, the alternatives, and the one chosen — is `IMPROVEMENT.md`.
