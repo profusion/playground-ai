@@ -1,16 +1,30 @@
-# AI Playground
+# Playground AI
 
-AI Playground is a hands-on course for learning how to build software with
+Playground AI is a hands-on course for learning how to build software with
 coding agents, repository instructions, reusable skills, and GitHub issues.
 
 You will learn by completing small tasks. Each task lives in Markdown, becomes
 a GitHub issue assigned to you, and has explicit completion criteria. Your work
 stays on your own branch, and each path keeps a progress file there.
 
+## TLDR
+
+1. Sign in to GitHub CLI if `gh auth status` fails: `gh auth login`
+2. Open this repository in your coding agent.
+3. Run `/start-journey`.
+4. Run `/start-task`. The agent chooses the task.
+5. Do the work with the agent.
+6. Run `/complete`.
+7. Repeat steps 4–6 until Quickstart is done.
+
+You never name the task. Your branch is `learners/<your-github-login>`.
+
 ## Start here
 
 Ask your agent to run `/start-journey`, or to use the `start-journey` skill. It
-welcomes you and checks that the GitHub CLI is installed and signed in.
+welcomes you, checks that the GitHub CLI is installed and signed in, and asks
+you to confirm the Git name and `@profusion.mobi` email that will appear on
+your commits.
 
 Everyone then completes the [Quickstart path](paths/quickstart/README.md)
 before choosing another path:
@@ -81,9 +95,6 @@ Instructions live in `AGENTS.md` and skills live in `.agents/skills/`, the
 locations Codex, Cursor, OpenCode, and Antigravity already read. Claude Code
 looks elsewhere, so `CLAUDE.md` and `.claude/skills` are symlinks to those same
 files rather than copies.
-
-Clone with symlinks enabled. On Windows that means Developer Mode or
-`git clone -c core.symlinks=true`, or use WSL.
 
 Your agent may expose the skills as `/start-journey`, `/start-task`, and
 `/complete`. If it has no slash commands, ask for the skill by name.
