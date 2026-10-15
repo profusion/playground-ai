@@ -1,7 +1,11 @@
 ---
 name: complete
 description: Finds the learner's in-progress task from progress files, the current route, and assigned GitHub issues, validates it, and closes it. Use when the learner invokes /complete. The learner does not name the task.
+compatibility: Requires git and the GitHub CLI (gh)
 disable-model-invocation: true
+metadata:
+  opencode/slash: "true"
+  opencode/autoinvoke: "false"
 ---
 
 # Complete Task
@@ -10,7 +14,7 @@ Validate the task already in progress. Do not ask the learner to choose a task f
 
 ## Workflow
 
-1. Read `.cursor/skills/current-task.md` and use it to select the route and `in_progress` task.
+1. Read `.agents/references/current-task.md` and use it to select the route and `in_progress` task.
 2. Read that task file and extract its `task_id`, `path`, deliverables, acceptance criteria, and completion-record requirements.
 3. Find the open issue assigned to `@me` whose body contains the exact `task_id`. If none exists, stop and recommend `/start-task`.
 4. Inspect the learner's work and verify every acceptance criterion. Run all relevant validation commands.

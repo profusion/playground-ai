@@ -1,7 +1,11 @@
 ---
 name: start-task
 description: Finds the learner's next task from progress files, the current route, and assigned GitHub issues, then starts it on the learner's branch. Use when the learner invokes /start-task. The learner does not name the task.
+compatibility: Requires git and the GitHub CLI (gh)
 disable-model-invocation: true
+metadata:
+  opencode/slash: "true"
+  opencode/autoinvoke: "false"
 ---
 
 # Start Task
@@ -10,7 +14,7 @@ Start the task the learner is ready for. Do not ask the learner to choose a task
 
 ## Workflow
 
-1. Read `.cursor/skills/current-task.md` and use it to select the route and task.
+1. Read `.agents/references/current-task.md` and use it to select the route and task.
 2. Read the selected task and require valid `task_id`, `title`, `path`, and `depends_on` frontmatter.
 3. If the selected task is already `in_progress`, return its task path and issue URL. Do not create another issue.
 4. Create `progress/<login>/<path>.md` from `paths/_templates/progress.md` when the route does not yet have one. List every task file in `paths/<path>/`, excluding `README.md`, in filename order.

@@ -1,7 +1,11 @@
 ---
 name: start-journey
 description: Welcomes a learner to AI Playground and verifies that the GitHub CLI is installed and authenticated. Use when the learner invokes /start-journey or asks to begin, start, or enter the playground.
+compatibility: Requires git and the GitHub CLI (gh)
 disable-model-invocation: true
+metadata:
+  opencode/slash: "true"
+  opencode/autoinvoke: "false"
 ---
 
 # Start Journey

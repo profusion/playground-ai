@@ -9,8 +9,8 @@ stays on your own branch, and each path keeps a progress file there.
 
 ## Start here
 
-Ask your agent to run `/start-journey`. It welcomes you and checks that the
-GitHub CLI is installed and signed in.
+Ask your agent to run `/start-journey`, or to use the `start-journey` skill. It
+welcomes you and checks that the GitHub CLI is installed and signed in.
 
 Everyone then completes the [Quickstart path](paths/quickstart/README.md)
 before choosing another path:
@@ -26,7 +26,8 @@ before choosing another path:
 - [Git](https://git-scm.com/)
 - [GitHub CLI](https://cli.github.com/)
 - A GitHub account
-- An AI coding agent that supports repository instructions and skills
+- A coding agent that reads `AGENTS.md` and Agent Skills, such as Codex, Claude
+  Code, Cursor, OpenCode, or Antigravity
 
 Confirm that GitHub CLI is authenticated:
 
@@ -57,7 +58,11 @@ the progress file and push your learner branch. They do not push `main`.
 
 ```text
 .
-├── .cursor/skills/       # Reusable agent workflows
+├── .agents/
+│   ├── references/       # Shared logic the skills read
+│   └── skills/           # Reusable agent workflows
+├── .claude/
+│   └── skills -> ../.agents/skills
 ├── paths/                # Learning paths
 │   ├── README.md
 │   ├── _templates/
@@ -66,10 +71,28 @@ the progress file and push your learner branch. They do not push `main`.
 │   └── <github-login>/
 │       └── quickstart.md
 ├── AGENTS.md             # Instructions for coding agents
+├── CLAUDE.md -> AGENTS.md
 └── README.md             # Instructions for learners
 ```
+
+## Works with any agent
+
+Instructions live in `AGENTS.md` and skills live in `.agents/skills/`, the
+locations Codex, Cursor, OpenCode, and Antigravity already read. Claude Code
+looks elsewhere, so `CLAUDE.md` and `.claude/skills` are symlinks to those same
+files rather than copies.
+
+Clone with symlinks enabled. On Windows that means Developer Mode or
+`git clone -c core.symlinks=true`, or use WSL.
+
+Your agent may expose the skills as `/start-journey`, `/start-task`, and
+`/complete`. If it has no slash commands, ask for the skill by name.
 
 ## Adding a learning path
 
 Copy `paths/_templates/task.md` for each task. Give tasks ordered filenames,
 clear deliverables, and acceptance criteria that an agent can verify.
+
+Put new skills in `.agents/skills/<name>/SKILL.md` with `name` and
+`description` frontmatter, where `name` matches the directory. Do not copy a
+skill into a harness-specific directory.
