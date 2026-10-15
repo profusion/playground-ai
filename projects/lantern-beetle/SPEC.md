@@ -6,8 +6,8 @@ document grows into a monolith.
 
 The product and the stack are fixed by [PROJECT.md](PROJECT.md): a one-page
 browser game in HTML, CSS, and JavaScript, with no framework and no build step.
-This specification describes that game and nothing larger. The game code arrives
-in the next quest; this quest decides the contracts.
+This specification describes that game and nothing larger. The contracts are
+implemented beside this file, and this index still points at the contracts first.
 
 ## The specification
 
@@ -41,6 +41,9 @@ any framework or build step.
 
 ## Status
 
-Specification only. No game code exists in this quest, and none is described here
-beyond the contracts a builder needs: file layout, module boundary, rules,
-states, and the checks that must pass.
+Built and measured. The game lives in this folder: `index.html`, `styles.css`,
+`logic.js`, and `play.js`. The measurement is `node check.mjs`, and
+`node check.mjs --blocked` proves that the same check fails when a path is
+blocked. `README.md` tells a newcomer how to start the page and run the
+measurement; `AGENTS.md` tells an agent to rerun it after every change that can
+affect the workflow.

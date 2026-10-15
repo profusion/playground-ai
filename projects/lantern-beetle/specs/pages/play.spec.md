@@ -91,8 +91,8 @@ request, no analytics, per [PROJECT.md](../../PROJECT.md).
 
 ## 4. Cross-cutting architecture
 
-The whole runtime is five files in `projects/lantern-beetle/`, loaded in this
-order:
+The runtime is five files in `projects/lantern-beetle/`, loaded in this order,
+plus two documents for whoever comes next:
 
 | File | Purpose |
 | --- | --- |
@@ -100,7 +100,9 @@ order:
 | `styles.css` | The dark grid and the two pieces. |
 | `logic.js` | The pure model from [specs/model/grid.spec.md](../model/grid.spec.md). |
 | `play.js` | Wires keyboard input and the model to the DOM. Owns no rules. |
-| `check.mjs` | The Node verification of the model, defined in [specs/model/grid.spec.md](../model/grid.spec.md). |
+| `check.mjs` | The Node measurement of the model, defined in [specs/model/grid.spec.md](../model/grid.spec.md), section 4. |
+| `README.md` | Setup, run, and measurement instructions for someone who did not take part in the build. |
+| `AGENTS.md` | The start and measure commands, and the rule that an agent reruns the measurement after every change that can affect the workflow. |
 
 Two constraints shape these choices, and both come from the brief in
 [PROJECT.md](../../PROJECT.md):
@@ -143,7 +145,9 @@ directly: movement, blocked edges, the win, the win freeze, reachability by
 search, and the setup errors. It cannot see the DOM, and this version does not
 claim otherwise.
 
-**Manual, for this version.** Each step is observable in a browser:
+**Manual, for this version.** Each step is observable in a browser, and an agent
+browser walked steps 1 to 6 while building this, with screenshots kept as
+evidence:
 
 1. Open `index.html` from the file system. The dark grid, the beetle, the
    lantern, and the hint line are visible, with no server running.

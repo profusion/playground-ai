@@ -42,6 +42,25 @@ the beetle is at a cell, that is where the beetle is drawn.
 | `moves` | whole number | Count of moves that changed the beetle's cell. |
 | `state` | object | A snapshot of the above, for the page to render. |
 
+### API surface
+
+One namespace carries the contract, so the page, the measurement, and any later
+tool speak the same language:
+
+| Member | Signature | Behavior |
+| --- | --- | --- |
+| `createGame` | `createGame(options?) -> game` | Builds a game. Options: `rows`, `cols` (default `8`), `beetle`, `lantern` (defaults in the table above). Throws when the setup is invalid, with `error.reason` set to the exact reason string named in section 3. |
+| `game.state()` | `-> snapshot` | `{ rows, cols, beetle, lantern, won, moves, status }`, where `status` is `idle`, `playing`, or `won` per the states table. |
+| `game.move(direction)` | `-> snapshot` | Applies one move from the rules above and returns the new snapshot. Throws with reason `unknown direction` when the direction is not one of the four; the page filters keys, so play never reaches that case. |
+| `game.reset()` | `-> snapshot` | Returns the game to its start state. |
+| `canReach` | `canReach({ rows, cols, beetle, lantern, blocked }) -> { reachable, distance }` | Breadth-first search over walkable cells. `blocked` is a list of cells that may not be entered; it defaults to empty, and the game itself never passes walls. |
+| `DEFAULT_OPTIONS` | object | The defaults above, kept in one place. |
+
+`logic.js` remains a classic script per
+[specs/pages/play.spec.md](../pages/play.spec.md), section 4: it assigns this
+namespace to `globalThis.LanternBeetle` and, when `module.exports` exists, exports
+the same object for Node.
+
 ### Rules
 
 1. Movement is orthogonal only: `up` decreases `row`, `down` increases `row`,
@@ -132,6 +151,23 @@ any check fails. Projected checks, each traceable to a rule above:
 Check 7 is the one the quest asks for in plain words: the script must show that
 the beetle *can* reach the lantern, rather than assume it. Checks 3 to 6 then show
 that the path is walkable through the same API the page uses.
+
+### The measurement's two modes
+
+A measurement that can only pass is not a measurement. An agent must be able to
+see this one fail, so `check.mjs` takes an optional mode:
+
+| Command | What it measures | Exit code |
+| --- | --- | --- |
+| `node check.mjs` | The game's primary workflow: every check in the table above, ending with the lantern reachable from the beetle's start by legal moves. | `0` when every check passes; non-zero on the first failure |
+| `node check.mjs --blocked` | Harness self-test: the same reachability search, run over a walled layout that a game can never produce, must report the lantern **unreachable**. | non-zero, naming the blocked path, so the failure is visible |
+
+The walled layout lives in the measurement alone. The game has no walls and never
+passes a `blocked` list, so the play rules above are untouched; the mode exists to
+prove a blocked path is *detected* rather than assumed away. The blocked search is
+expected to exit non-zero, which is why the two modes are documented as a pair:
+green means the road is clear, and the `--blocked` run means the dark can still
+win.
 
 ## 5. Related specifications and journeys
 
