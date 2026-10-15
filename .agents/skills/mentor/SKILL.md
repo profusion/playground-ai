@@ -21,7 +21,9 @@ The skill is named `mentor` because `/help` is already used by other agents.
    - If `gh` is missing, not authenticated, the name is missing, or the email does not end in `@profusion.mobi`, the next step is `/start-journey`. Name the failed check and stop.
 3. Fetch `origin`. The learner's main branch is `<login>/main`. If it does not exist locally or on `origin`, the next step is `/start-journey`, even when the GitHub CLI and email are valid. Say that an adventurer cannot proceed without that branch, then stop.
 4. Read `progress/<login>/*.md` from `origin/<login>/main` when that branch exists. Also read the local copy when it is already checked out. If another branch is checked out and the worktree is dirty, do not switch. Say which copy of the progress you could read.
-5. Read `.agents/references/current-task.md`. Use "Choose the route" and "Choose the task". Do not apply "Repair mismatches".
+5. Read `.agents/references/current-task.md`. Use "Choose the route" and "Choose the task". Do not apply "Repair mismatches". Also apply "Start gates".
+   - If the Journey gate fails, the next step is `/start-journey`.
+   - If the Previous task gate fails, name the unfinished task. The next step is to finish it with `/complete`, or `/start-task` only when that unfinished task is not started yet.
    - If the progress file and the assigned issues conflict, describe both states. Point to `/start-task` or `/complete` as the place that resolves it. Do not resolve it here.
 6. Read the selected task file and use its goal to explain the work in plain language.
 

@@ -30,8 +30,10 @@ Include:
 6. a proposed technical approach
 7. testable acceptance criteria
 
-Prefer the simplest technical approach that satisfies the brief. Record major
-trade-offs instead of presenting a choice as universally correct.
+Use the tech stack and the reasons already written in `PROJECT.md`. Do not
+replace that stack. Prefer the simplest approach that satisfies the brief
+inside it. Record major trade-offs instead of presenting a choice as
+universally correct.
 
 ## Deliverables
 

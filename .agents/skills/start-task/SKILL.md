@@ -14,12 +14,13 @@ Start the task the learner is ready for. Do not ask the learner to choose a task
 
 ## Workflow
 
-1. Read `.agents/references/current-task.md` and use it to select the route and task.
-2. Read the selected task and require valid `task_id`, `title`, `path`, and `depends_on` frontmatter.
-3. If the selected task is already `in_progress`, return its task path and issue URL. Do not create another issue.
-4. Create `progress/<login>/<path>.md` from `paths/_templates/progress.md` when the route does not yet have one. List every task file in `paths/<path>/`, excluding `README.md`, in filename order.
-5. Confirm every `depends_on` task is `completed`. Stop and name any unmet prerequisite.
-6. Reuse the open issue assigned to `@me` whose body contains the exact `task_id`. Otherwise create one:
+1. Read `.agents/references/current-task.md`. Run the Journey gate before changing branches or files. If it fails, stop and tell the learner to run `/start-journey`.
+2. Use the rest of that file to select the route and task. Then run the Previous task gate. If it fails, name the unfinished task and stop. Do not create an issue.
+3. Read the selected task and require valid `task_id`, `title`, `path`, and `depends_on` frontmatter.
+4. If the selected task is already `in_progress`, return its task path and issue URL. Do not create another issue.
+5. Create `progress/<login>/<path>.md` from `paths/_templates/progress.md` when the route does not yet have one. List every task file in `paths/<path>/`, excluding `README.md`, in filename order.
+6. Confirm every `depends_on` task is `completed` and its issue is closed. Stop and name any unmet prerequisite.
+7. Reuse the open issue assigned to `@me` whose body contains the exact `task_id`. Otherwise create one:
 
 ```bash
 gh issue create \
@@ -28,13 +29,13 @@ gh issue create \
   --assignee "@me"
 ```
 
-7. Set this task to `in_progress`, record the issue URL, and set `Updated` to today's date in `YYYY-MM-DD` form.
-8. Commit only the progress file when it changed:
+8. Set this task to `in_progress`, record the issue URL, and set `Updated` to today's date in `YYYY-MM-DD` form.
+9. Commit only the progress file when it changed:
 
 ```text
 Start <task_id>
 ```
 
-9. Push `<login>/main` with upstream tracking. Never push the repository `main` or use `--force`. If `<login>/main` does not exist, stop and tell the learner to run `/start-journey`.
+10. Push `<login>/main` with upstream tracking. Never push the repository `main` or use `--force`. If `<login>/main` does not exist, stop and tell the learner to run `/start-journey`.
 
 Return the selected route, task path, progress-file path, and issue URL. Do not modify the task file or begin implementation unless the learner also asks to start the work.

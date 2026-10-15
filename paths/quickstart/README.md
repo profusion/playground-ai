@@ -2,14 +2,14 @@
 
 The required onboarding path starts one project and takes it from idea to
 working application. It is intentionally technology-neutral: learners choose an
-idea first, define what success means, and only then select tools and build.
-Later routes may polish this same project or start a different one.
+idea and a tech stack with a web AI first, define what success means, and
+then build. Later routes may polish this same project or start a different one.
 
 ## Tasks
 
 | Order | Task | Outcome |
 | --- | --- | --- |
-| 1 | [Decide what to build](01-decide-what-to-build.md) | A focused product brief |
+| 1 | [Decide what to build](01-decide-what-to-build.md) | A brief, a stack, and the web conversation |
 | 2 | [Define the specification](02-define-the-spec.md) | A build-ready specification |
 | 3 | [Build the application](03-build-the-app.md) | An app the agent can measure |
 | 4 | [Improve the application](04-improve-the-app.md) | An evidence-based product improvement |

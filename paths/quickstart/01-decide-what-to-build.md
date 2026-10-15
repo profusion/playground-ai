@@ -9,33 +9,55 @@ depends_on: []
 
 ## Goal
 
-Turn an initial idea into a small product brief that can be completed during
-this playground.
+Choose any project and any tech stack by discussing them with a web AI, then
+record the decision in `PROJECT.md`.
 
 ## Instructions
 
-Work with your agent to explore a few ideas, then choose one. Keep the first
-version small: one target user, one core problem, and one primary workflow.
+Have the conversation in a web AI, not only with the coding agent in this
+repository. Profusion provides paid Gemini PRO on the web. Use that as the
+default: open [Gemini](https://gemini.google.com) on the PRO plan. Another web
+AI is allowed when the learner has a reason to use it.
+
+If the learner is out of ideas, tell them to prompt that AI for project ideas.
+Then discuss the chosen idea until these decisions are explicit:
+
+1. what will be built
+2. the tech stack
+3. the reason for that tech stack
+
+Any project and any tech stack are acceptable. Keep the first version small
+enough to finish on this path.
 
 Choose a `<project-name>`: lowercase letters, numbers, and hyphens, taken from
 the product name. Create `projects/<project-name>/`. This route starts a new
 project. A later route may polish this same folder instead of creating another
 one. Do not put project files in the repository root.
 
-Create `projects/<project-name>/PROJECT.md`. Describe:
+Create `projects/<project-name>/PROJECT.md` with:
 
 1. the working product name
 2. the target user
 3. the problem it solves
 4. the primary user workflow
 5. what is deliberately excluded from the first version
+6. the tech stack
+7. the reason for that tech stack
+8. which web AI was used
 
-The agent should ask questions and surface trade-offs, but the learner makes
-the product decisions.
+Open a pull request into `<github-login>/main`. The base is
+`<github-login>/main`, not the repository `main`. Put screenshots of the web
+AI conversation in the pull request description. The screenshots must show the
+discussion of what to build and why that tech stack was chosen. A link the
+reviewer cannot open does not count.
+
+The learner makes the product and stack decisions. The web AI and the coding
+agent can question those decisions, not replace them.
 
 ## Deliverables
 
-- `projects/<project-name>/PROJECT.md`: A concise product brief.
+- `projects/<project-name>/PROJECT.md`: The product brief, tech stack, and the reason for that stack.
+- A pull request into `<github-login>/main` whose description contains screenshots of the web AI conversation.
 
 ## Acceptance criteria
 
@@ -45,10 +67,14 @@ the product decisions.
 - [ ] It states one clear problem in plain language.
 - [ ] It describes one end-to-end primary workflow.
 - [ ] It lists at least three out-of-scope features.
-- [ ] The proposed first version is small enough to build in one learning
-      session.
+- [ ] It names the tech stack.
+- [ ] It explains why that stack was chosen.
+- [ ] It names the web AI used for the discussion.
+- [ ] The proposed first version is small enough to build on this path.
+- [ ] A pull request into `<github-login>/main` is open. Its base is not the repository `main`.
+- [ ] The pull request description contains screenshots of the web AI conversation about the product and the tech stack.
 
 ## Completion record
 
-Comment on the GitHub issue with the chosen idea and the most important scope
-decision.
+Comment on the GitHub issue with the chosen idea, the tech stack, the reason
+for that stack, and the pull request URL.

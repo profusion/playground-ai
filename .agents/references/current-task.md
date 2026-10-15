@@ -28,6 +28,33 @@ Read each issue body and match its `task_id`.
 - Progress `completed` with an open issue means completion was not recorded on GitHub. Do not start another task. `/complete` must validate and close that issue.
 - A closed issue with progress not `completed`, or two different `in_progress` tasks, is a conflict. Stop and show both states.
 
+## Start gates
+
+`/start-task` must pass both gates before it creates an issue or marks a task `in_progress`. If either gate fails, change nothing.
+
+### Journey
+
+Everything from `start-journey` is present:
+
+- `gh auth status` succeeds and `gh repo view` succeeds.
+- `git config user.name` is non-empty.
+- `git config user.email` ends in `@profusion.mobi`.
+- `<login>/main` exists locally and on `origin`.
+- `projects/README.md` exists on `<login>/main`.
+
+The learner's own branch and `projects/` folder are the project setup. A `projects/<project-name>/` directory is created by the first build task, so it is not required here.
+
+If any item is missing, the next step is `/start-journey`. Do not create the branch or the projects folder from `/start-task`.
+
+### Previous task
+
+On the current route, tasks are ordered by filename.
+
+- The first task may start when the journey gate passes.
+- A later task may start only when the immediately previous task is `completed` and its assigned issue is closed.
+- If the previous task is `in_progress`, stay on it. Do not open the next issue.
+- If any earlier task is `not_started`, `in_progress`, or `completed` with its issue still open, do not start a task after it.
+
 ## Choose the route
 
 Routes are directories in `paths/` other than `_templates`.
