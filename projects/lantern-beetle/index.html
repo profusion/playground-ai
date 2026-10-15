@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lantern Beetle</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main id="game">
+  <h1>Lantern Beetle</h1>
+  <p class="lede">One beetle, one lantern, one win.</p>
+
+  <div id="board" class="board" tabindex="0" role="group"
+       aria-label="The dark grid. Arrow keys move the beetle.">
+    <!-- Absolutely placed, so the 64 cells stay pure grid items. Order matters:
+         the beetle is last so it is drawn on top when it reaches the lantern. -->
+    <div id="lantern" class="piece lantern" aria-label="Lantern"></div>
+    <div id="beetle" class="piece beetle" aria-label="Beetle"></div>
+  </div>
+
+  <p id="status" class="status" aria-live="polite">Use the arrow keys to find the lantern.</p>
+
+  <p class="meta">
+    No server, no framework, no build step.
+    <a href="README.md">README</a> · <a href="SPEC.md">specification</a>
+  </p>
+</main>
+
+<!-- logic.js is a classic script on purpose: browsers refuse ES modules over
+     file://, and this page must open by double-clicking the file. -->
+<script src="logic.js"></script>
+<script src="play.js"></script>
+</body>
+</html>
