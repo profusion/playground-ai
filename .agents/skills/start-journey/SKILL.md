@@ -60,6 +60,8 @@ Show the learner both values and ask whether this is the name and email they wan
 - If either value is missing, the email is not a Profusion address, or the learner says either value is wrong, stop.
 - Ask them for the correct name and `@profusion.mobi` email, then tell them to set those values and run `/start-journey` again. Do not run `git config` yourself.
 
+When `PLAYGROUND_TESTING=1` and `git config` has no name or email, use `PLAYGROUND_GIT_NAME` and `PLAYGROUND_GIT_EMAIL` instead. Show those values. The email must still end in `@profusion.mobi`. If either variable is missing or the email is wrong, stop. Do not ask for confirmation and do not run `git config`. Put the same name and email in `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME`, and `GIT_COMMITTER_EMAIL` for every commit in this journey.
+
 ## Personal main
 
 When they confirm a name and an `@profusion.mobi` email, the GitHub login is `<login>`. The learner cannot start Quickstart without the branch `<login>/main`. Later pull requests use that branch as their base. Never open a pull request against the repository `main`, and never push the repository `main`.
@@ -86,6 +88,8 @@ git push -u origin HEAD
 ```
 
 Wait for an explicit yes. If the learner does not approve, run nothing and stop. After approval, run only those commands.
+
+When `PLAYGROUND_TESTING=1`, the flag is the explicit yes. Show the commands, say that testing mode approved them, then run only those commands. Do not wait.
 
 If `<login>/main` already exists but `projects/README.md` does not, show the `mkdir`, file, commit, and push commands and ask for approval with the same sentence. Do not add the folder without approval.
 

@@ -108,6 +108,32 @@ A merge without prior human approval does not complete a quest. This policy is
 inherited by every task file and should not be repeated in each task's
 acceptance criteria.
 
+## Testing mode
+
+Testing mode validates the curriculum. It is not a way to graduate.
+
+Turn it on by setting the environment variable `PLAYGROUND_TESTING=1` before
+`start-journey`. Also set `PLAYGROUND_GIT_NAME` and `PLAYGROUND_GIT_EMAIL`.
+The email must still end in `@profusion.mobi`. Do not write `git config`.
+
+When the variable is set:
+
+- The flag confirms the git identity and approves the stronghold commands.
+  Show the commands, then run them. Do not wait.
+- Every quest still gets its own GitHub issue and its own pull request into
+  `<github-login>/main`. Confirm both with `gh issue view` and `gh pr view`
+  before sealing the quest. Do not skip either one.
+- The pull request author may approve their own pull request. Try
+  `gh pr review --approve`. If GitHub rejects a self-approval, comment
+  `TESTING-MODE: approved` on that pull request and treat the comment as the
+  approval. Record in the completion note that testing mode supplied it.
+- If no screen recorder is available, screenshots plus the measurement output
+  may stand in for a video. Say `TESTING-MODE: video waived` in the pull
+  request. If Slack is unreachable, keep the demo outline and write
+  `TESTING-MODE: Slack waived` in `DEMO.md`. Do not invent a Slack link.
+- Do not waive the project files, the specification, the measurement, or the
+  quest order.
+
 ## Guardrails
 
 - Do not invent requirements that conflict with the learner's product idea.

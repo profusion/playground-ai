@@ -39,6 +39,7 @@ Everything from `start-journey` is present:
 - `gh auth status` succeeds and `gh repo view` succeeds.
 - `git config user.name` is non-empty.
 - `git config user.email` ends in `@profusion.mobi`.
+- When `PLAYGROUND_TESTING=1` and git config is empty, `PLAYGROUND_GIT_NAME` is non-empty and `PLAYGROUND_GIT_EMAIL` ends in `@profusion.mobi` instead. Do not run `git config`.
 - `<login>/main` exists locally and on `origin`.
 - `projects/README.md` exists on `<login>/main`.
 
@@ -51,7 +52,7 @@ If any item is missing, the next step is `/start-journey`. Do not create the bra
 On the current route, tasks are ordered by filename.
 
 - The first task may start when the journey gate passes.
-- A later task may start only when the immediately previous task is `completed`, its assigned issue is closed, and its pull request has a human approval. A merge without that approval does not count.
+- A later task may start only when the immediately previous task is `completed`, its assigned issue is closed, and its pull request has a human approval. A merge without that approval does not count. When `PLAYGROUND_TESTING=1`, the author's own approval or a `TESTING-MODE: approved` comment on that pull request counts.
 - If the previous task is `in_progress`, stay on it. Do not open the next issue.
 - If any earlier task is `not_started`, `in_progress`, or `completed` with its issue still open, do not start a task after it.
 

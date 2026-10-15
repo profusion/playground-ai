@@ -25,6 +25,12 @@ Validate the quest already in progress. Speak with the Voice section in `AGENTS.
 6. Use `gh pr view` to inspect its author, state, draft status, reviews, head,
    and base. At least one latest review must be `APPROVED` by a human who is
    not the author. Ignore bots. A merge without that approval does not count.
+   When `PLAYGROUND_TESTING=1`, the author may approve their own petition.
+   Try `gh pr review --approve`. If GitHub rejects that self-approval, comment
+   `TESTING-MODE: approved` on the petition and treat the comment as the
+   approval. The issue and the pull request must still exist. Confirm both
+   with `gh issue view` and `gh pr view`. Record that testing mode supplied
+   the approval.
 7. If the petition is a draft, evidence is missing, approval is missing, or any
    quest check fails, leave the quest `in_progress` and the issue open. Name
    the smallest next action. Remind the adventurer that reviewers glance at

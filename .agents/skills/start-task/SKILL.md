@@ -58,3 +58,6 @@ Return the selected road, quest path, quest branch, chronicle path, issue URL,
 and petition URL. Tell the adventurer to add the quest's required evidence to
 the petition description and mark it ready for review. Do not modify the task
 file or begin implementation unless the adventurer also asks to start the work.
+
+Testing mode does not skip the issue or the pull request. After creating them,
+run `gh issue view` and `gh pr view` and include both URLs in the reply.
