@@ -94,8 +94,10 @@ name so the instructions hold in either case. Do not name the orientation skill
 
 Every quest, on every road, follows the same review gate:
 
-1. `start-task` creates `<github-login>/<task-id>` and opens a petition (pull
-   request) into `<github-login>/main`.
+1. `start-task` creates `<github-login>/<task-id>` and the quest notice. It
+   opens a petition (pull request) into `<github-login>/main` once that branch
+   has a commit the stronghold does not. GitHub rejects a petition between two
+   identical commits. Do not create an empty commit to get around that.
 2. The petition description presents review evidence: specs, screenshots,
    videos, links, or other artifacts named by the quest.
 3. At least one human who did not author the petition approves it. Bot reviews

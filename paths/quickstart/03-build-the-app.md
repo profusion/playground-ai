@@ -46,9 +46,14 @@ measurement that fits the product:
   workflow
 
 The measurement must fail when the primary workflow is broken and pass when it
-works. Use this loop: run the app, measure, change, measure again. Read the
-command output. A screenshot or a learner saying "it works" is not the
-measurement.
+works. Show both: one run that exits non-zero because the journey is broken,
+then the real journey exiting 0. A command that can only pass does not count.
+Use this loop: run the app, measure, change, measure again. Read the command
+output. A screenshot or a learner saying "it works" is not the measurement.
+
+Also run the type checker, linter, formatter, and tests named in `PROJECT.md`
+when that brief lists them. Those checks catch the companion's mistakes early.
+They do not replace the measurement of the workflow.
 
 Keep the agent on that loop until the measurement passes. Teach it in both of
 these ways:
@@ -66,10 +71,10 @@ process started or a file exists.
 
 ### Show the working application
 
-Put a playable video of the primary workflow and screenshots of the app in the
-quest petition created by `/start-task`. The video is the proof it works. The
-screenshots make the result easy to glance at. A link the reviewer cannot open
-does not count.
+Commit a playable video of the primary workflow and screenshots of the app in
+the workshop, and show them in the quest petition. The video is the proof it
+works. The screenshots make the result easy to glance at. Use URLs that open
+on GitHub. A path on the adventurer's machine does not count.
 
 ## Deliverables
 
@@ -84,7 +89,8 @@ does not count.
 ## Acceptance criteria
 
 - [ ] The app implements the complete linked specification rooted at `SPEC.md`;
-      an agent proved a main journey with a measurement command.
+      an agent proved a main journey with a measurement that passes for the
+      working journey and fails when that journey is broken.
 - [ ] `README.md` and `AGENTS.md` in that directory tell an agent how to repeat that measurement.
 - [ ] The quest petition contains a playable video of the primary workflow and screenshots of the app.
 

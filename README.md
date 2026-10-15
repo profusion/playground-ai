@@ -67,7 +67,8 @@ gh auth login
 You do not name the quest. `/start-journey` raises your stronghold,
 `<your-github-login>/main`, only after you approve the commands. `/start-task`
 reads your chronicle, your road, and your quest notices, then opens the next
-quest on `<your-github-login>/<task-id>` with a petition into your stronghold.
+quest on `<your-github-login>/<task-id>`. The petition into the stronghold
+opens once that branch has a real quest commit. An empty commit does not count.
 A human other than the author glances at the evidence, not the code, and
 approves it. `/complete` tests the quest, verifies that approval, merges the
 petition, marks the quest `completed`, and closes the notice. Nothing pushes

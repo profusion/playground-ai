@@ -19,7 +19,9 @@ agent.
 ## Instructions
 
 Run the application and complete its primary workflow yourself. Observe where
-the experience is confusing, slow, repetitive, fragile, or incomplete.
+the experience is confusing, slow, repetitive, fragile, or incomplete. In
+`IMPROVEMENT.md`, name what you tried, including the actions that changed
+nothing.
 
 Create `projects/<project-name>/IMPROVEMENT.md` and record:
 
@@ -34,12 +36,14 @@ challenge your assumptions, and propose a small implementation plan. Make the
 change, test it, and use the application again to compare the result with your
 original observation.
 
-Reuse the measurement command from task 3. Extend `projects/<project-name>/README.md` and
+Reuse the measurement command from task 3 and extend it so the new behavior is
+checked. Keep a way to show that command failing when the improvement is
+broken. Extend `projects/<project-name>/README.md` and
 `projects/<project-name>/AGENTS.md` when the improvement changes what that command must observe.
 
-Put a playable video of the improved behavior and screenshots of the change in
-this quest's petition created by `/start-task`. The original workflow video
-does not count.
+Commit a playable video of the improved behavior and screenshots of the change,
+and show them in this quest's petition. The video and screenshots from the
+build quest do not count. Use URLs that open on GitHub.
 
 Update `projects/<project-name>/SPEC.md` when the improvement changes product behavior. Avoid a broad
 rewrite or unrelated cleanup.
@@ -56,7 +60,7 @@ rewrite or unrelated cleanup.
 ## Acceptance criteria
 
 - [ ] `projects/<project-name>/IMPROVEMENT.md` records a problem found by using the app, the chosen fix, and the before-and-after result.
-- [ ] The fix is in the workshop, and tests for it pass.
+- [ ] The fix is in the workshop, and the measurement covers it and still passes.
 - [ ] The quest petition contains a playable video of the improved behavior and screenshots of the change.
 
 ## Completion record

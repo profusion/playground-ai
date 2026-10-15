@@ -19,7 +19,9 @@ Start the quest the adventurer is ready for. Speak with the Voice section in `AG
 3. Read the selected task and require valid `task_id`, `title`, `path`, and `depends_on` frontmatter.
 4. If the selected task is already `in_progress`, check out
    `<login>/<task_id>`, then return its task path, issue URL, and pull request
-   URL. Do not create another issue or branch.
+   URL. If the issue exists but the petition does not, and the quest branch
+   has a commit `<login>/main` does not, open the draft petition in step 13.
+   Do not create another issue or branch. Do not create an empty commit.
 5. Create `progress/<login>/<path>.md` from `paths/_templates/progress.md` when the route does not yet have one. List every task file in `paths/<path>/`, excluding `README.md`, in filename order.
 6. Confirm every `depends_on` task is `completed` and its issue is closed. Stop and name any unmet prerequisite.
 7. Reuse the open issue assigned to `@me` whose body contains the exact `task_id`. Otherwise create one:
@@ -43,7 +45,8 @@ Start <task_id>
     `<login>/main`. If that branch already exists locally or on `origin`, check
     it out and fast-forward it instead. Stop on divergence.
 12. Push the quest branch with upstream tracking.
-13. Reuse its existing pull request, or open a draft pull request:
+13. Reuse its existing pull request, or open a draft pull request once
+    `<login>/<task_id>` has a commit that `<login>/main` does not:
 
 ```bash
 gh pr create \
@@ -54,10 +57,17 @@ gh pr create \
   --body "Quest: <task_id>\n\nIssue: <issue URL>\n\nReview the evidence in this description. Do not read the code."
 ```
 
-Return the selected road, quest path, quest branch, chronicle path, issue URL,
-and petition URL. Tell the adventurer to add the quest's required evidence to
-the petition description and mark it ready for review. Do not modify the task
-file or begin implementation unless the adventurer also asks to start the work.
+GitHub rejects that command when the two branches point at the same commit.
+Do not create an empty commit to force it. Create the issue and the branch,
+say the petition opens after the first real quest commit, and open it as soon
+as that commit is pushed.
 
-Testing mode does not skip the issue or the pull request. After creating them,
-run `gh issue view` and `gh pr view` and include both URLs in the reply.
+Return the selected road, quest path, quest branch, chronicle path, issue URL,
+and petition URL when one exists. Tell the adventurer to add the quest's
+required evidence to the petition description and mark it ready for review.
+Do not modify the task file or begin implementation unless the adventurer also
+asks to start the work.
+
+Testing mode does not skip the issue or the pull request. Confirm the issue
+with `gh issue view`. Confirm the pull request with `gh pr view` once it
+exists. Include both URLs in the reply.

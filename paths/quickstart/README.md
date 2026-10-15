@@ -11,13 +11,15 @@ another.
 
 | Order | Task | Outcome |
 | --- | --- | --- |
-| 1 | [Decide what to build](01-decide-what-to-build.md) | A brief, a stack, and the web conversation |
+| 1 | [Decide what to build](01-decide-what-to-build.md) | A brief, a stack with automatic checks, and the web conversation |
 | 2 | [Define the specification](02-define-the-spec.md) | A linked specification for the whole app |
 | 3 | [Build the application](03-build-the-app.md) | An app the agent can measure |
 | 4 | [Improve the application](04-improve-the-app.md) | An evidence-based product improvement |
 | 5 | [Demo the application](05-demo-the-app.md) | A narrated product demo in `#dev-ai` |
 
 Complete the tasks in order. Run `/start-task` and `/complete` without naming a task. The agent reads `progress/<github-login>/quickstart.md` and your GitHub issues to decide where you are.
+
+On the first quest, ask the oracle for a stack whose type checker, linter, and tests give the companion a fast feedback loop. The tip in that quest has a prompt you can paste.
 
 ## Finish line
 

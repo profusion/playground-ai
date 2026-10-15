@@ -20,8 +20,10 @@ Validate the quest already in progress. Speak with the Voice section in `AGENTS.
 4. Check out `<login>/<task_id>`. Inspect the work and verify every acceptance
    criterion. Run all relevant validation commands.
 5. Find the petition whose head is `<login>/<task_id>` and base is
-   `<login>/main`. Verify its description contains the evidence required by the
-   quest.
+   `<login>/main`. If none exists, open the draft petition from `start-task`
+   once the quest branch has a commit the stronghold lacks. If the branches
+   still match, stop. Do not create an empty commit. Verify the description
+   contains the evidence required by the quest.
 6. Use `gh pr view` to inspect its author, state, draft status, reviews, head,
    and base. At least one latest review must be `APPROVED` by a human who is
    not the author. Ignore bots. A merge without that approval does not count.

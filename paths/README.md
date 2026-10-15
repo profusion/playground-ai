@@ -17,8 +17,9 @@ learners.
 2. Walk the Quickstart road first.
 3. Complete quests in filename order unless a quest says otherwise.
 4. Run `/start-task` from your stronghold, `<github-login>/main`. The companion
-   chooses the quest, creates `<github-login>/<task-id>`, and opens its petition
-   back into the stronghold.
+   chooses the quest and creates `<github-login>/<task-id>`. The petition back
+   into the stronghold opens once that branch has a real quest commit. An empty
+   commit does not count.
 5. Put the quest's review evidence in the petition. A human who did not author
    it glances at that evidence, not the code, and approves it.
 6. Seal the approved quest with `/complete`.

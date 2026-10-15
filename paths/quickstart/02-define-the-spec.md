@@ -39,7 +39,7 @@ Every detailed spec includes:
 1. purpose and user-visible behavior
 2. inputs, outputs, rules, and important states
 3. errors, empty states, and permissions
-4. how the behavior can be verified
+4. how the behavior can be verified, naming a command the companion can run when the stack provides one
 5. links to related specs and user journeys
 
 Every journey names the user, goal, starting point, actions, expected result,

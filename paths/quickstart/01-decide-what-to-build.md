@@ -28,6 +28,13 @@ Then discuss the chosen idea until these decisions are explicit:
 2. the tech stack
 3. the reason for that tech stack
 
+> TIP: Ask the oracle for a stack that gives your companion a fast feedback
+> loop: a type checker, a strict linter, a formatter, and tests that run from
+> one command. When the AI's mistakes fail loudly and early, you can trust its
+> work more. For example, ask: "Which stack for this idea gives the strongest
+> automatic checks, such as static types and linters, so an AI coding agent can
+> catch its own mistakes?"
+
 The adventurer may build anything they want. A game, an interactive art
 experience, a social network, or something that fits none of those names are
 all welcome. Any tech stack is acceptable. Keep the first version small enough
@@ -46,12 +53,13 @@ Create `projects/<project-name>/PROJECT.md` with:
 4. the primary user workflow
 5. what is deliberately excluded from the first version
 6. the tech stack
-7. the reason for that tech stack
+7. the reason for that tech stack, including the automatic checks it gives the companion when the tip above was followed
 8. which web AI was used
 
-Put screenshots of the web AI conversation in the quest petition created by
-`/start-task`. They must show the discussion of what to build and why that
-tech stack was chosen. A link the reviewer cannot open does not count.
+Commit screenshots of the web AI conversation in the workshop and show them in
+the quest petition. They must show the discussion of what to build and why
+that tech stack was chosen. Use a URL that renders the picture on GitHub. A
+path on the adventurer's machine does not count.
 
 The learner makes the product and stack decisions. The web AI and the coding
 agent can question those decisions, not replace them.

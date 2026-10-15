@@ -35,6 +35,8 @@ the previous task. Keep the recording focused on the product in use.
 
 Post the video in the `#dev-ai` Slack channel with a short message that states
 the product idea. Put the Slack message link in `projects/<project-name>/DEMO.md`.
+The link must open that message. The channel name alone does not count, and a
+made-up link does not count.
 
 Show the demo outline and Slack posting in this quest's petition.
 
