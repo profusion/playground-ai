@@ -10,7 +10,7 @@ metadata:
 
 # Start Journey
 
-Open the playground. Welcome the learner before checking any tools.
+Open the playground. Welcome the adventurer before checking any tools. Follow the Voice section in `AGENTS.md`.
 
 ## Welcome
 
@@ -24,13 +24,15 @@ Show this banner first, in a code block, exactly as written. Then show the prose
 █     █ █████ █████ █████  ███  █   █ █████
 ```
 
-> There is a room in this repository that does not exist yet. It will have a name, a person it was made for, and a reason to be opened. You are the one who will decide those things. An agent can walk beside you, carry the tedious weight, and argue with your choices, but the invention remains yours. That is the bargain of Playground AI.
+> Greetings, adventurer.
 >
-> The way through is written down. Each lesson is a page of Markdown. When you begin one, it becomes a GitHub issue with your name on it, a claim staked in public. Your road has its own main, `<your-github-login>/main`. Every pull request opens against that branch, never against the shared `main`. Each project lives in `projects/<project-name>/`. A later route may polish that same project, or start another one beside it. Each path also keeps a progress file, a record of where you have already been. When a lesson is truly finished, the issue closes and the file remembers that you passed.
+> There is a workshop in this repository that does not exist yet. It will have a name, a person it was forged for, and a reason to open its doors. You are the one who will decide those things. A companion may walk beside you, carry the tedious weight, and argue with your choices, but the invention remains yours. That is the bargain of Playground AI.
 >
-> No one takes another road until they have walked the Quickstart. It has five stops. First you decide what to build. Then you write the specification, so the agent is not left to invent your intent. Next you build the thing and give the agent a measurement it can run itself, with `/goal` holding it to that proof. Then you use what you made, find the rough edge, and make it better. Last, you stand beside the finished work and narrate it, as you would for a client, and post that demo in `#dev-ai`.
+> The road is written down. Each quest is a page of Markdown. When you take one up, it becomes a quest notice with your name on it. Your stronghold is your own main, `<your-github-login>/main`. Every petition opens against that branch, never against the guild road `main`. Each project lives in a workshop, `projects/<project-name>/`. A later road may polish that same workshop, or raise another beside it. Each road also keeps a chronicle, a record of the quests you have already sealed. When a quest is truly finished, the notice closes and the chronicle remembers that you passed.
 >
-> Two words move you from stop to stop. `/start-task` looks at your progress and your GitHub issues, then opens the next page. You do not name it. `/complete` tests the page already open and, if it holds, closes it. If you lose the path, `/mentor` reads the record and tells you the single next step. You are here because you asked to begin. An adventurer does not proceed without `<your-github-login>/main`. Before the first step, the door asks for a working GitHub CLI, a commit identity that carries your `@profusion.mobi` email, and your approval of the commands that create that branch.
+> No adventurer takes another road until they have walked the Quickstart. It has five quests. First you decide what to build, in counsel with an oracle. Then you write the specification, so your companion is not left to invent your intent. Next you build the thing and give your companion a measurement it can run itself, with `/goal` holding it to that proof. Then you use what you made, find the rough edge, and make it better. Last, you stand beside the finished work and narrate it, as you would before a client, and post that tale in `#dev-ai`.
+>
+> Two commands move you from quest to quest. `/start-task` reads your chronicle and your quest notices, then opens the next one. You do not name it. `/complete` tests the quest already open and, if it holds, seals it. If you lose the road, `/mentor` reads the chronicle and tells you the single next step. You are here because you asked to begin. An adventurer does not proceed without the stronghold `<your-github-login>/main`. Before the first step, the gate asks for a working GitHub CLI, a commit identity that carries your `@profusion.mobi` email, and your approval of the commands that raise that stronghold.
 
 ## GitHub CLI
 
@@ -65,7 +67,7 @@ When they confirm a name and an `@profusion.mobi` email, the GitHub login is `<l
 Fetch `origin`.
 
 - If `<login>/main` already exists, check it out and fast-forward it. If the worktree is dirty, or the branch has diverged, stop and explain. Do not recreate it.
-- If it does not exist, show the exact commands below with `<login>` filled in. Then ask, in these words: "I will create a branch with these commands so we can start the quickstart journey. Do you approve?"
+- If it does not exist, show the exact commands below with `<login>` filled in. Then ask, in these words: "Greetings, adventurer. I will raise your stronghold with these commands so the quickstart quest may begin. Do you approve?"
 
 ```bash
 git fetch origin
@@ -74,9 +76,9 @@ mkdir -p projects
 cat > projects/README.md << 'EOF'
 # Projects
 
-Each project lives in `projects/<project-name>/`.
-A route may start a new project or polish one that already exists.
-A polishing route uses the existing folder. Do not put project files in the repository root.
+Greetings, adventurer. Each workshop lives in `projects/<project-name>/`.
+A road may found a new workshop or polish one that already stands.
+A polishing road uses the existing folder. Do not put project files in the repository root.
 EOF
 git add projects/README.md
 git commit -m "Add the projects folder for this journey"

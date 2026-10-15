@@ -8,6 +8,8 @@ depends_on:
 
 # Demo the application
 
+Greetings, adventurer. This quest is to stand before the hall and tell what you forged.
+
 ## Goal
 
 Present the product idea in a narrated video while using the application, then
@@ -34,6 +36,8 @@ the previous task. Keep the recording focused on the product in use.
 Post the video in the `#dev-ai` Slack channel with a short message that states
 the product idea. Put the Slack message link in `projects/<project-name>/DEMO.md`.
 
+Show the demo outline and Slack posting in this quest's petition.
+
 Ask the agent to review the outline before you record. You give the demo. The
 agent does not narrate it for you.
 
@@ -44,16 +48,8 @@ agent does not narrate it for you.
 
 ## Acceptance criteria
 
-- [ ] `projects/<project-name>/DEMO.md` states the product idea, target user, and problem.
-- [ ] The outline names the workflow that will be shown and the opening and
-      closing lines.
-- [ ] The learner narrates the video while using the application.
-- [ ] The video shows the primary workflow and the improvement from task 4.
-- [ ] The video is posted in the `#dev-ai` Slack channel.
-- [ ] The Slack message states the product idea and includes the video.
-- [ ] `projects/<project-name>/DEMO.md` contains a link to that Slack message.
-- [ ] The learner delivered the narration. The agent did not record it in their
-      place.
+- [ ] The adventurer narrates a demo while using the app, and posts that video in `#dev-ai`.
+- [ ] `projects/<project-name>/DEMO.md` states the product idea and links to that Slack message.
 
 ## Completion record
 

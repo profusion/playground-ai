@@ -7,10 +7,12 @@ depends_on: []
 
 # Decide what to build
 
+Greetings, adventurer. This quest asks you to choose what you will forge.
+
 ## Goal
 
-Choose any project and any tech stack by discussing them with a web AI, then
-record the decision in `PROJECT.md`.
+Choose any project and any tech stack by discussing them with an oracle on the
+web, then record the decision in `PROJECT.md`.
 
 ## Instructions
 
@@ -26,8 +28,10 @@ Then discuss the chosen idea until these decisions are explicit:
 2. the tech stack
 3. the reason for that tech stack
 
-Any project and any tech stack are acceptable. Keep the first version small
-enough to finish on this path.
+The adventurer may build anything they want. A game, an interactive art
+experience, a social network, or something that fits none of those names are
+all welcome. Any tech stack is acceptable. Keep the first version small enough
+to finish on this path.
 
 Choose a `<project-name>`: lowercase letters, numbers, and hyphens, taken from
 the product name. Create `projects/<project-name>/`. This route starts a new
@@ -45,11 +49,9 @@ Create `projects/<project-name>/PROJECT.md` with:
 7. the reason for that tech stack
 8. which web AI was used
 
-Open a pull request into `<github-login>/main`. The base is
-`<github-login>/main`, not the repository `main`. Put screenshots of the web
-AI conversation in the pull request description. The screenshots must show the
-discussion of what to build and why that tech stack was chosen. A link the
-reviewer cannot open does not count.
+Put screenshots of the web AI conversation in the quest petition created by
+`/start-task`. They must show the discussion of what to build and why that
+tech stack was chosen. A link the reviewer cannot open does not count.
 
 The learner makes the product and stack decisions. The web AI and the coding
 agent can question those decisions, not replace them.
@@ -57,22 +59,12 @@ agent can question those decisions, not replace them.
 ## Deliverables
 
 - `projects/<project-name>/PROJECT.md`: The product brief, tech stack, and the reason for that stack.
-- A pull request into `<github-login>/main` whose description contains screenshots of the web AI conversation.
+- Screenshots of the web AI conversation in the quest petition.
 
 ## Acceptance criteria
 
-- [ ] The brief lives at `projects/<project-name>/PROJECT.md`.
-- [ ] `<project-name>` is lowercase letters, numbers, and hyphens.
-- [ ] `PROJECT.md` names one target user.
-- [ ] It states one clear problem in plain language.
-- [ ] It describes one end-to-end primary workflow.
-- [ ] It lists at least three out-of-scope features.
-- [ ] It names the tech stack.
-- [ ] It explains why that stack was chosen.
-- [ ] It names the web AI used for the discussion.
-- [ ] The proposed first version is small enough to build on this path.
-- [ ] A pull request into `<github-login>/main` is open. Its base is not the repository `main`.
-- [ ] The pull request description contains screenshots of the web AI conversation about the product and the tech stack.
+- [ ] `projects/<project-name>/PROJECT.md` states the product, the tech stack, and why that stack was chosen.
+- [ ] The quest petition shows screenshots of the web AI conversation about that decision.
 
 ## Completion record
 

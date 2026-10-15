@@ -51,7 +51,7 @@ If any item is missing, the next step is `/start-journey`. Do not create the bra
 On the current route, tasks are ordered by filename.
 
 - The first task may start when the journey gate passes.
-- A later task may start only when the immediately previous task is `completed` and its assigned issue is closed.
+- A later task may start only when the immediately previous task is `completed`, its assigned issue is closed, and its pull request has a human approval. A merge without that approval does not count.
 - If the previous task is `in_progress`, stay on it. Do not open the next issue.
 - If any earlier task is `not_started`, `in_progress`, or `completed` with its issue still open, do not start a task after it.
 

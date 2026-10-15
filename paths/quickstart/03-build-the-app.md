@@ -8,21 +8,27 @@ depends_on:
 
 # Build the application
 
+Greetings, adventurer. This quest is to raise the workshop and prove it stands.
+
 ## Goal
 
-Implement, test, and document the application described by
-`projects/<project-name>/PROJECT.md` and `projects/<project-name>/SPEC.md`,
-and leave the agent a measurement it can run itself. Keep every project file
-inside that directory.
+Implement, test, and document the application described by the complete linked
+specification rooted at `projects/<project-name>/SPEC.md`, and leave the agent
+a measurement it can run itself. Keep every project file inside that directory.
 
 ## Instructions
 
-Ask the agent to propose a short implementation sequence based on `SPEC.md`.
-Build in small, verifiable increments and run relevant checks after each
-increment.
+Before writing code, start at `SPEC.md` and follow every link. Read every
+detailed `*.spec.md` and user-journey file. Treat that linked set as the
+application contract.
 
-Do not expand the product scope while building. If the specification is
-missing a necessary decision, update `projects/<project-name>/SPEC.md` and record why.
+Do not begin development while an in-scope part of `PROJECT.md` is absent,
+ambiguous, or disconnected from the map. Complete the specification first.
+
+Ask the agent to map the linked specs and journeys into a short implementation
+sequence. Build in small, verifiable increments and run relevant checks after
+each increment. If development exposes a missing decision, update the relevant
+spec file and its links before implementing it.
 
 The finished application must include setup and run instructions for someone
 who did not participate in the build.
@@ -60,11 +66,10 @@ process started or a file exists.
 
 ### Show the working application
 
-Open a pull request into `<github-login>/main`. The head branch contains the
-application work. The base is `<github-login>/main`, not the repository `main`.
-Record a video of the primary workflow working and put that video in the pull
-request description. A screenshot or a link the reviewer cannot play does not
-count.
+Put a playable video of the primary workflow and screenshots of the app in the
+quest petition created by `/start-task`. The video is the proof it works. The
+screenshots make the result easy to glance at. A link the reviewer cannot open
+does not count.
 
 ## Deliverables
 
@@ -72,32 +77,16 @@ count.
 - Automated tests for the primary workflow and important edge cases.
 - Setup, run, test, and measurement instructions in `projects/<project-name>/README.md`.
 - `projects/<project-name>/AGENTS.md` with the start, measure, and rerun instructions.
-- Any justified specification updates in `projects/<project-name>/SPEC.md`.
-- A pull request into `<github-login>/main` whose description contains a video
-  of the primary workflow.
+- Any justified updates to the linked specification files.
+- A playable video and screenshots of the primary workflow in the quest
+  petition.
 
 ## Acceptance criteria
 
-- [ ] The application implements every in-scope requirement in `projects/<project-name>/SPEC.md`.
-- [ ] A new contributor can install and run it by following `projects/<project-name>/README.md`.
-- [ ] The primary workflow works end to end.
-- [ ] Automated tests cover the primary workflow and key failure states.
-- [ ] The agent ran `curl`, Playwright CLI, an agent browser, or a purpose-built
-      tool against the running application.
-- [ ] That measurement checks the primary workflow and its saved output shows
-      the pass result.
-- [ ] `projects/<project-name>/README.md` gives the exact command to repeat the measurement.
-- [ ] `projects/<project-name>/AGENTS.md` tells an agent how to start the app, measure it, and rerun
-      the measurement after each relevant change.
-- [ ] The completion record quotes the `/goal` objective, including the behavior
-      to prove and the measurement command.
-- [ ] Formatting, linting, type checking, and tests pass when supported by the
-      chosen stack.
-- [ ] No credentials or generated local secrets are committed.
-- [ ] A pull request into `<github-login>/main` is open. Its base is not the
-      repository `main`.
-- [ ] The pull request description contains a playable video of the primary
-      workflow working.
+- [ ] The app implements the complete linked specification rooted at `SPEC.md`;
+      an agent proved a main journey with a measurement command.
+- [ ] `README.md` and `AGENTS.md` in that directory tell an agent how to repeat that measurement.
+- [ ] The quest petition contains a playable video of the primary workflow and screenshots of the app.
 
 ## Completion record
 

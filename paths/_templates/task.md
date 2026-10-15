@@ -23,8 +23,9 @@ Describe the single outcome the learner will achieve.
 
 ## Acceptance criteria
 
-- [ ] A criterion that can be checked from repository contents.
-- [ ] A criterion that can be checked by running a command.
+- [ ] One check that proves the quest outcome.
+
+The general petition policy in `AGENTS.md` also applies. Do not repeat it here.
 
 ## Completion record
 

@@ -1,11 +1,12 @@
 # Playground AI
 
-Playground AI is a hands-on course for learning how to build software with
-coding agents, repository instructions, reusable skills, and GitHub issues.
+Greetings, adventurer.
 
-You will learn by completing small tasks. Each task lives in Markdown, becomes
-a GitHub issue assigned to you, and has explicit completion criteria. Your work
-stays on your own branch, and each path keeps a progress file there.
+Playground AI is a guild hall for learning how to build software with coding
+agents, repository instructions, reusable skills, and quest notices. Each quest
+lives in Markdown, becomes a GitHub issue with your name on it, and has terms
+you must meet. Your stronghold is `<your-github-login>/main`, and each road
+keeps a chronicle there.
 
 ## TLDR
 
@@ -19,14 +20,13 @@ stays on your own branch, and each path keeps a progress file there.
 
 If you are unsure where you are, run `/mentor`.
 
-You never name the task. Your branch is `<your-github-login>/main`. Pull requests target that branch.
+You never name the quest. Your stronghold is `<your-github-login>/main`. Petitions target that branch.
 
 ## Start here
 
-Ask your agent to run `/start-journey`, or to use the `start-journey` skill. It
-welcomes you, checks that the GitHub CLI is installed and signed in, and asks
-you to confirm the Git name and `@profusion.mobi` email that will appear on
-your commits.
+Ask your companion to run `/start-journey`. It greets you, checks that the
+GitHub CLI is installed and signed in, and asks you to confirm the Git name
+and `@profusion.mobi` email that will appear on your commits.
 
 Everyone then completes the [Quickstart path](paths/quickstart/README.md)
 before choosing another path:
@@ -57,20 +57,21 @@ If it is not, sign in:
 gh auth login
 ```
 
-## Task workflow
+## Quest workflow
 
-1. Ask your agent to run `/start-journey`.
-2. Ask your agent to run `/start-task`.
-3. Work with the agent until every acceptance criterion is satisfied.
-4. Ask your agent to run `/complete`.
+1. Ask your companion to run `/start-journey`.
+2. Ask your companion to run `/start-task`.
+3. Work with your companion until every term of the quest is satisfied.
+4. Ask your companion to run `/complete`.
 
-You do not name the task. `/start-journey` creates `<your-github-login>/main`
-only after you approve the commands. `/start-task` checks your progress file,
-your current route, and your GitHub issues, then opens the next task on that
-branch. `/complete` validates the task already in progress, marks it
-`completed`, and closes your issue. Both commands commit the progress file and
-push `<your-github-login>/main`. They do not push the repository `main`. Pull
-requests target `<your-github-login>/main`.
+You do not name the quest. `/start-journey` raises your stronghold,
+`<your-github-login>/main`, only after you approve the commands. `/start-task`
+reads your chronicle, your road, and your quest notices, then opens the next
+quest on `<your-github-login>/<task-id>` with a petition into your stronghold.
+A human other than the author glances at the evidence, not the code, and
+approves it. `/complete` tests the quest, verifies that approval, merges the
+petition, marks the quest `completed`, and closes the notice. Nothing pushes
+the guild road `main`.
 
 ## Repository map
 

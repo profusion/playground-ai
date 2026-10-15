@@ -25,7 +25,7 @@ The skill is named `mentor` because `/help` is already used by other agents.
    - If the Journey gate fails, the next step is `/start-journey`.
    - If the Previous task gate fails, name the unfinished task. The next step is to finish it with `/complete`, or `/start-task` only when that unfinished task is not started yet.
    - If the progress file and the assigned issues conflict, describe both states. Point to `/start-task` or `/complete` as the place that resolves it. Do not resolve it here.
-6. Read the selected task file and use its goal to explain the work in plain language.
+6. Read the selected task file and use its goal to explain the work. Follow the Voice section in `AGENTS.md`. Begin with "Greetings, adventurer." when this is the first reply.
 
 ## What to say
 

@@ -8,27 +8,47 @@ depends_on:
 
 # Define the specification
 
+Greetings, adventurer. This quest turns your brief into a plan your companion
+can follow without guessing.
+
 ## Goal
 
-Convert the product brief into a specification detailed enough for an agent to
-implement without guessing at product behavior.
+Specify the entire application as a linked set of small Markdown files before
+development begins.
 
 ## Instructions
 
-Read `projects/<project-name>/PROJECT.md` and create `SPEC.md` in that same
-directory. This task continues that project. Do not create another folder.
-Resolve ambiguous behavior with the
-learner before selecting an implementation.
+Read `projects/<project-name>/PROJECT.md`. In that same directory, create
+`SPEC.md` as the map of the realm. It links to every detailed specification
+and user journey. Do not turn it into one giant specification.
 
-Include:
+Choose one structure:
 
-1. user stories
-2. the happy-path flow
-3. important edge cases and error states
-4. functional requirements
-5. non-functional requirements
-6. a proposed technical approach
-7. testable acceptance criteria
+- **Isolated:** keep detailed files under `specs/`, such as
+  `specs/pages/home.spec.md`, `specs/auth/login.spec.md`, and
+  `specs/journeys/first-visit.md`.
+- **Colocated:** mirror the intended code structure, such as
+  `pages/home.spec.md` beside the future `pages/home.tsx`.
+
+Use multiple files. Give each feature, page, service, data model, or substantial
+behavior its own `*.spec.md` when that makes the contract easier to navigate.
+Give each important user journey its own Markdown file.
+
+Every detailed spec includes:
+
+1. purpose and user-visible behavior
+2. inputs, outputs, rules, and important states
+3. errors, empty states, and permissions
+4. how the behavior can be verified
+5. links to related specs and user journeys
+
+Every journey names the user, goal, starting point, actions, expected result,
+failure paths, and links to the specs that implement it.
+
+Follow every link from `SPEC.md` before finishing. The linked files should
+cover the complete in-scope application from `PROJECT.md`, including
+cross-cutting architecture, data, and non-functional requirements. Resolve
+ambiguity with the adventurer now, before development.
 
 Use the tech stack and the reasons already written in `PROJECT.md`. Do not
 replace that stack. Prefer the simplest approach that satisfies the brief
@@ -37,17 +57,16 @@ universally correct.
 
 ## Deliverables
 
-- `projects/<project-name>/SPEC.md`: The product and technical specification.
+- `projects/<project-name>/SPEC.md`: The index linking the complete specification.
+- Multiple linked `*.spec.md` files and user-journey files, isolated under
+  `specs/` or colocated with the intended code structure.
 
 ## Acceptance criteria
 
-- [ ] Every in-scope behavior from `PROJECT.md` appears in `SPEC.md`.
-- [ ] The main workflow has explicit inputs, actions, and expected outputs.
-- [ ] Error and empty states are defined.
-- [ ] The technical approach names the runtime, main dependencies, and data
-      storage strategy.
-- [ ] Acceptance criteria are observable and testable.
-- [ ] No out-of-scope feature from `PROJECT.md` has silently moved into scope.
+- [ ] `SPEC.md` links to multiple small specifications and journeys that cover
+      the complete in-scope app from `PROJECT.md`.
+- [ ] The linked files describe buildable behavior, verification, and their
+      relationships without broken links.
 
 ## Completion record
 
