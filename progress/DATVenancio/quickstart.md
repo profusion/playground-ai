@@ -5,7 +5,7 @@ Branch: DATVenancio/main
 
 | Task | Title | Status | Issue | Updated |
 | --- | --- | --- | --- | --- |
-| quickstart-01 | Quickstart 01: Decide what to build | in_progress | https://github.com/profusion/playground-ai/issues/11 | 2026-10-19 |
+| quickstart-01 | Quickstart 01: Decide what to build | completed | https://github.com/profusion/playground-ai/issues/11 | 2026-10-19 |
 | quickstart-02 | Quickstart 02: Define the specification | not_started | | |
 | quickstart-03 | Quickstart 03: Build the application | not_started | | |
 | quickstart-04 | Quickstart 04: Improve the application | not_started | | |
