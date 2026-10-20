@@ -19,8 +19,10 @@ development begins. The companion writes those files with you.
 ## Your companion
 
 The companion is the coding agent in this repository. Ask it to draft
-`SPEC.md`, the detailed specs, and the user journeys. You decide what is true.
-The companion may question a decision. The decision stays yours.
+`SPEC.md`, the detailed specs, and the user journeys from
+`projects/<project-name>/PROJECT.md`. That brief is the basis for this quest.
+You decide what is true. The companion may question a decision. The decision
+stays yours.
 
 Any companion that can read this repository can take up the work. These are
 suggestions:
@@ -32,7 +34,9 @@ suggestions:
 
 ## Instructions
 
-Read `projects/<project-name>/PROJECT.md`. In that same directory, create
+Read `projects/<project-name>/PROJECT.md` and reuse it as the basis for every
+file in this quest. The product, the user, the workflow, the exclusions, and
+the tech stack in that brief are the scope. In that same directory, create
 `SPEC.md` as the map of the realm. It links to every detailed specification
 and user journey. Do not turn it into one giant specification.
 
