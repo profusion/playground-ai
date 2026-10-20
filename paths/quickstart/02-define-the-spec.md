@@ -9,12 +9,26 @@ depends_on:
 # Define the specification
 
 Greetings, adventurer. This quest turns your brief into a plan your companion
-can follow without guessing.
+can follow without guessing. From this quest onward, rely on your companion.
 
 ## Goal
 
 Specify the entire application as a linked set of small Markdown files before
-development begins.
+development begins. The companion writes those files with you.
+
+## Your companion
+
+The companion is the coding agent in this repository. Ask it to draft
+`SPEC.md`, the detailed specs, and the user journeys. You decide what is true.
+The companion may question a decision. The decision stays yours.
+
+Any companion that can read this repository can take up the work. These are
+suggestions:
+
+- **Cursor.** Profusion provides Cursor for some people.
+- **Claude.** The most popular companion.
+- **Codex.** The alternative.
+- **OpenCode.** The cheapest plan, with many free models.
 
 ## Instructions
 

@@ -37,13 +37,22 @@ before choosing another path:
 4. [Improve the application](paths/quickstart/04-improve-the-app.md)
 5. [Demo the application](paths/quickstart/05-demo-the-app.md)
 
+## Companions
+
+From the specification quest onward, rely on your companion. Any companion that
+can read this repository can take up the work. These are suggestions:
+
+- **Cursor.** Profusion provides Cursor for some people.
+- **Claude.** The most popular companion.
+- **Codex.** The alternative.
+- **OpenCode.** The cheapest plan, with many free models.
+
 ## Prerequisites
 
 - [Git](https://git-scm.com/)
 - [GitHub CLI](https://cli.github.com/)
 - A GitHub account
-- A coding agent that reads `AGENTS.md` and Agent Skills, such as Codex, Claude
-  Code, Cursor, OpenCode, or Antigravity
+- A companion that reads `AGENTS.md` and Agent Skills
 
 Confirm that GitHub CLI is authenticated:
 
