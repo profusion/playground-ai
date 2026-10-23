@@ -37,7 +37,9 @@ Then discuss the chosen idea until these decisions are explicit:
 
 The adventurer may build anything they want. A game, an interactive art
 experience, a social network, or something that fits none of those names are
-all welcome. Any tech stack is acceptable. Keep the first version small enough
+all welcome. Any tech stack is acceptable. Be brave. This quest is an
+opportunity to explore new ground. Be experimental: use technologies you do
+not know, and ideas that are new to you. Keep the first version small enough
 to finish on this path.
 
 Choose a `<project-name>`: lowercase letters, numbers, and hyphens, taken from

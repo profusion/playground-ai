@@ -4,7 +4,9 @@ Greetings, adventurer. This is the first road, and no other road opens until
 it is sealed. It founds one workshop and takes a product from idea to working
 application. Any craft is welcome: you choose the idea and the tech stack in
 counsel with an oracle, Gemini PRO on the web by default, then you define what
-success means and build. A later road may polish this same workshop or found
+success means and build. Be brave on this road. It is new ground, and a chance
+to explore. Be experimental: try a tech stack you do not know, and an idea
+that is new to you. A later road may polish this same workshop or found
 another.
 
 ## Tasks
@@ -19,7 +21,7 @@ another.
 
 Complete the tasks in order. Run `/start-task` and `/complete` without naming a task. The agent reads `progress/<github-login>/quickstart.md` and your GitHub issues to decide where you are.
 
-On the first quest, ask the oracle for a stack whose type checker, linter, and tests give the companion a fast feedback loop. The tip in that quest has a prompt you can paste.
+On the first quest, be bold. Explore a tech stack and an idea that are new to you. Ask the oracle for a stack whose type checker, linter, and tests give the companion a fast feedback loop. The tip in that quest has a prompt you can paste.
 
 ## Finish line
 
