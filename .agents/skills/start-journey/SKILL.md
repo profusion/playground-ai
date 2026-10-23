@@ -58,9 +58,17 @@ Show the learner both values and ask whether this is the name and email they wan
 
 - The email must end in `@profusion.mobi`.
 - If either value is missing, the email is not a Profusion address, or the learner says either value is wrong, stop.
-- Ask them for the correct name and `@profusion.mobi` email, then tell them to set those values and run `/start-journey` again. Do not run `git config` yourself.
+- Ask them for the correct name and `@profusion.mobi` email, then tell them to set those values and run `/start-journey` again. Do not run `git config` to set `user.name` or `user.email`.
 
-When `PLAYGROUND_TESTING=1` and `git config` has no name or email, use `PLAYGROUND_GIT_NAME` and `PLAYGROUND_GIT_EMAIL` instead. Show those values. The email must still end in `@profusion.mobi`. If either variable is missing or the email is wrong, stop. Do not ask for confirmation and do not run `git config`. Put the same name and email in `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME`, and `GIT_COMMITTER_EMAIL` for every commit in this journey.
+When `PLAYGROUND_TESTING=1` and `git config` has no name or email, use `PLAYGROUND_GIT_NAME` and `PLAYGROUND_GIT_EMAIL` instead. Show those values. The email must still end in `@profusion.mobi`. If either variable is missing or the email is wrong, stop. Do not ask for confirmation and do not run `git config` for `user.name` or `user.email`. Put the same name and email in `GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`, `GIT_COMMITTER_NAME`, and `GIT_COMMITTER_EMAIL` for every commit in this journey.
+
+After the identity is accepted, in testing mode and otherwise, run:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+That points Git at the shared checks in `.githooks/`. Do not set `user.name` or `user.email` with `git config`.
 
 ## Personal main
 
@@ -68,7 +76,7 @@ When they confirm a name and an `@profusion.mobi` email, the GitHub login is `<l
 
 Fetch `origin`.
 
-- If `<login>/main` already exists, check it out and fast-forward it. If the worktree is dirty, or the branch has diverged, stop and explain. Do not recreate it.
+- If `<login>/main` already exists, run Catch up in `.agents/references/current-task.md`. Do not recreate the branch. A dirty worktree or a rebase or merge conflict stops the journey; explain it and leave the repository as Catch up left it.
 - If it does not exist, show the exact commands below with `<login>` filled in. Then ask, in these words: "Greetings, adventurer. I will raise your stronghold with these commands so the quickstart quest may begin. Do you approve?"
 
 ```bash
@@ -83,7 +91,7 @@ A road may found a new workshop or polish one that already stands.
 A polishing road uses the existing folder. Do not put project files in the repository root.
 EOF
 git add projects/README.md
-git commit -m "Add the projects folder for this journey"
+git commit -m "chore: add the projects folder for this journey"
 git push -u origin HEAD
 ```
 

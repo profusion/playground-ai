@@ -1,0 +1,8 @@
+#!/bin/bash
+# Require a Conventional Commit with a description.
+# The check is bash, using the header rule from Conventional Commits.
+# /bin/bash is already on macOS and Linux.
+set -euo pipefail
+
+. .githooks/commit-rules.sh
+check_commit_message_file commit-msg "$1"

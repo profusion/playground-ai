@@ -1,0 +1,38 @@
+#!/bin/bash
+# Before a push, check every new commit for an @profusion.mobi email and a
+# Conventional Commit description. Merge commits keep Git's own subject and
+# are checked for email only. Commits already on origin/main are the guild
+# road; bringing that road into a stronghold must not rejudge them.
+# /bin/bash is already on macOS and Linux.
+set -euo pipefail
+
+. .githooks/commit-rules.sh
+
+zero=0000000000000000000000000000000000000000
+failed=0
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+  if [[ "$local_sha" == "$zero" ]]; then
+    continue
+  fi
+
+  if git rev-parse --verify -q origin/main >/dev/null; then
+    if [[ "$remote_sha" == "$zero" ]]; then
+      commits=$(git rev-list "$local_sha" --not --remotes origin/main)
+    else
+      commits=$(git rev-list "$local_sha" --not "$remote_sha" origin/main)
+    fi
+  elif [[ "$remote_sha" == "$zero" ]]; then
+    commits=$(git rev-list "$local_sha" --not --remotes)
+  else
+    commits=$(git rev-list "$local_sha" --not "$remote_sha")
+  fi
+
+  for commit in $commits; do
+    if ! check_commit_object "$commit"; then
+      failed=1
+    fi
+  done
+done
+
+exit "$failed"

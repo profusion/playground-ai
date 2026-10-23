@@ -66,6 +66,24 @@ If it is not, sign in:
 gh auth login
 ```
 
+## Commit seals
+
+Every commit uses an `@profusion.mobi` email and a [Conventional Commit](https://www.conventionalcommits.org/en/v1.0.0/) with a description:
+
+```text
+type: description
+```
+
+`type` is one of `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, or `revert`. The description is the summary after the colon, and it must be present. A scope is optional: `docs(quickstart): record the decision`. The subject line stays within 100 characters.
+
+The checks are bash scripts in `.githooks/`. macOS and Linux already include `/bin/bash`, so there is nothing to install: no commitlint, Node, Python, or Husky. The scripts do not live in `.git/hooks`. Git will not run a cloned script until each clone points Git at that directory once:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+`/start-journey` runs that command after your email is accepted. If your stronghold `<your-github-login>/main` already exists, `/mentor`, `/start-task`, and `/complete` repair what the guild road gained since you began: they set the hook path, rebase your stronghold when it has diverged from its own remote, and merge `origin/main` in when those commits are missing. `pre-commit` checks the email. `commit-msg` checks the description, because `pre-commit` runs before Git has the message. `pre-push` checks both on every new commit the push would send. Commits already on the guild road `main` are not judged again. Merge commits are checked for the email only.
+
 ## Quest workflow
 
 1. Ask your companion to run `/start-journey`.
@@ -92,6 +110,7 @@ the guild road `main`.
 │   └── skills/           # Reusable agent workflows
 ├── .claude/
 │   └── skills -> ../.agents/skills
+├── .githooks/            # Shared commit and push checks
 ├── paths/                # Learning paths
 │   ├── README.md
 │   ├── _templates/

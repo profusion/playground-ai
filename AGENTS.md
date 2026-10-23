@@ -116,7 +116,9 @@ Testing mode validates the curriculum. It is not a way to graduate.
 
 Turn it on by setting the environment variable `PLAYGROUND_TESTING=1` before
 `start-journey`. Also set `PLAYGROUND_GIT_NAME` and `PLAYGROUND_GIT_EMAIL`.
-The email must still end in `@profusion.mobi`. Do not write `git config`.
+The email must still end in `@profusion.mobi`. Do not write `git config` for
+`user.name` or `user.email`. Catch up, including `start-journey`, may set
+`core.hooksPath` to `.githooks`.
 
 When the variable is set:
 

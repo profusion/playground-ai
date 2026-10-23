@@ -14,12 +14,33 @@ gh issue list --assignee @me --state all --limit 100 --json number,title,state,u
 ```
 
 Read each issue body and match its `task_id`.
-5. Check out `<login>/main`. If the current branch is different and the worktree is dirty, stop and ask the learner to commit or stash. Fast-forward it when `origin` has it. If the branches have diverged, stop. Do not create the branch here, rebase, or force-push. Do not push the repository `main`.
+5. Run Catch up below. Do not create `<login>/main` here. Do not push the repository `main`. Do not force-push.
 6. Read the local `progress/<login>/*.md` files and the task frontmatter under `paths/`.
 7. Reconcile each existing progress file with its route directory. Append any
    task that is present under `paths/<path>/` but missing from the table as
    `not_started`. Preserve existing statuses and issue URLs. Stop if a progress
-   row refers to a task that no longer exists.
+   row refers to a task that no longer exists. Do this after Catch up, so the
+   task list is the one on the updated stronghold.
+
+## Catch up
+
+Run this when `<login>/main` already exists. It repairs an adventurer who started before the guild road moved: a missing hook path, a stronghold that needs a rebase onto its own remote, and guild-road commits that never reached the stronghold. Do not create `<login>/main` here. Do not push the repository `main`. Do not force-push.
+
+1. Remember the current branch. `git fetch origin`.
+2. If the worktree is dirty, stop. Ask the learner to commit or stash. Do not stash for them.
+3. If `git config --get core.hooksPath` is not `.githooks`, run `git config core.hooksPath .githooks`. Testing mode allows this. Do not set `user.name` or `user.email`.
+4. Check out `<login>/main`.
+5. When `origin/<login>/main` exists, make the local stronghold match it:
+   - Fast-forward when the remote is ahead.
+   - When the two have diverged, rebase the local commits onto `origin/<login>/main` with `git rebase origin/<login>/main`. If the rebase stops on a conflict, run `git rebase --abort` and stop. Explain the conflict.
+   - When the local stronghold is only ahead, leave it. The later push publishes those commits.
+6. When `git merge-base --is-ancestor origin/main HEAD` fails, the stronghold is missing guild-road commits. Merge them with `git merge --no-edit origin/main`. If the merge stops on a conflict, run `git merge --abort` and stop. Explain the conflict. Do not rebase `<login>/main` onto `origin/main`. A merge keeps the existing seals, so the push check does not rejudge commits already on the remote.
+7. Push `<login>/main` when it is ahead of `origin/<login>/main`. Never use `--force`. If the push is rejected, stop and show the hook output.
+8. If the branch remembered in step 1 is `<login>/<task_id>`, or a later step is about to use that quest branch, update it too. Check it out. Fast-forward `origin/<login>/<task_id>` when that remote is ahead. When the local quest branch and that remote have diverged, rebase onto `origin/<login>/<task_id>` and abort on conflict. Then, when `<login>/main` is not an ancestor of the quest branch, merge `<login>/main` with `git merge --no-edit <login>/main` and abort on conflict. Push the quest branch without `--force`. Check the remembered branch back out when this step was only repairing it.
+
+Tell the adventurer which of these were missing and which command repaired them.
+
+A missing `core.hooksPath`, or a stronghold that does not yet contain `origin/main`, is repaired here. Do not send the learner back to `/start-journey` for those two gaps.
 
 ## Repair mismatches
 
@@ -39,11 +60,11 @@ Everything from `start-journey` is present:
 - `gh auth status` succeeds and `gh repo view` succeeds.
 - `git config user.name` is non-empty.
 - `git config user.email` ends in `@profusion.mobi`.
-- When `PLAYGROUND_TESTING=1` and git config is empty, `PLAYGROUND_GIT_NAME` is non-empty and `PLAYGROUND_GIT_EMAIL` ends in `@profusion.mobi` instead. Do not run `git config`.
+- When `PLAYGROUND_TESTING=1` and git config is empty, `PLAYGROUND_GIT_NAME` is non-empty and `PLAYGROUND_GIT_EMAIL` ends in `@profusion.mobi` instead. Do not run `git config` for `user.name` or `user.email`.
 - `<login>/main` exists locally and on `origin`.
 - `projects/README.md` exists on `<login>/main`.
 
-The learner's own branch and `projects/` folder are the project setup. A `projects/<project-name>/` directory is created by the first build task, so it is not required here.
+The learner's own branch and `projects/` folder are the project setup. A `projects/<project-name>/` directory is created by the first build task, so it is not required here. A missing `core.hooksPath` or a stronghold that does not contain `origin/main` is repaired by Catch up before this gate is judged.
 
 If any item is missing, the next step is `/start-journey`. Do not create the branch or the projects folder from `/start-task`.
 

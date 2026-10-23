@@ -10,28 +10,29 @@ metadata:
 
 # Mentor
 
-Tell the learner where they are and the next step. Do not do the step.
+Tell the learner where they are and the next step. Do not do that step. You may run Catch up first, so an adventurer who already began is not left behind the guild road.
 
 The skill is named `mentor` because `/help` is already used by other agents.
 
 ## Workflow
 
-1. Change nothing. Do not edit files, switch branches, create issues, commit, push, or run `git config`.
+1. Do not start or finish a quest. Do not edit a chronicle, create an issue, or run `git config` for `user.name` or `user.email`. Catch up in `.agents/references/current-task.md` is the one repair you may run.
 2. Run `gh auth status`, `gh api user --jq .login`, `git config user.name`, and `git config user.email`.
    - If `gh` is missing, not authenticated, the name is missing, or the email does not end in `@profusion.mobi`, the next step is `/start-journey`. Name the failed check and stop.
 3. Fetch `origin`. The learner's main branch is `<login>/main`. If it does not exist locally or on `origin`, the next step is `/start-journey`, even when the GitHub CLI and email are valid. Say that an adventurer cannot proceed without that branch, then stop.
-4. Read `progress/<login>/*.md` from `origin/<login>/main` when that branch exists. Also read the local copy when it is already checked out. If another branch is checked out and the worktree is dirty, do not switch. Say which copy of the progress you could read.
-5. Read `.agents/references/current-task.md`. Use "Choose the route" and "Choose the task". Do not apply "Repair mismatches". Also apply "Start gates".
+4. Run Catch up from `.agents/references/current-task.md`. If it stops on a dirty worktree, a conflict, or a rejected push, that is the next step. Name the blocker and stop. Do not send the learner to `/start-journey` only because the hook path was missing or the stronghold was behind `origin/main`.
+5. Read `progress/<login>/*.md` from `origin/<login>/main` when that branch exists. Also read the local copy when it is already checked out. If another branch is checked out and the worktree is dirty, do not switch. Say which copy of the progress you could read.
+6. Read `.agents/references/current-task.md`. Use "Choose the route" and "Choose the task". Do not apply "Repair mismatches". Also apply "Start gates".
    - If the Journey gate fails, the next step is `/start-journey`.
    - If the Previous task gate fails, name the unfinished task. The next step is to finish it with `/complete`, or `/start-task` only when that unfinished task is not started yet.
    - If the progress file and the assigned issues conflict, describe both states. Point to `/start-task` or `/complete` as the place that resolves it. Do not resolve it here.
-6. Read the selected task file and use its goal to explain the work. Follow the Voice section in `AGENTS.md`. Begin with "Greetings, adventurer." when this is the first reply.
+7. Read the selected task file and use its goal to explain the work. Follow the Voice section in `AGENTS.md`. Begin with "Greetings, adventurer." when this is the first reply.
 
 ## What to say
 
 Give four short parts:
 
-1. **Where you are:** branch, route, task, and status.
+1. **Where you are:** branch, route, task, and status. If Catch up changed the hook path or brought the guild road into the stronghold, say what it repaired.
 2. **What is recorded:** the progress-file status and the assigned issue URL, or that neither exists yet.
 3. **Next step:** exactly one of `/start-journey`, `/start-task`, or `/complete`.
 4. **What that step is for:** one or two sentences from the task goal. Do not start the task.

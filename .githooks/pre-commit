@@ -1,0 +1,8 @@
+#!/bin/bash
+# Reject a commit whose author or committer email is not @profusion.mobi.
+# The message is checked by commit-msg, because this hook runs before Git
+# has the commit message. /bin/bash is already on macOS and Linux.
+set -euo pipefail
+
+. .githooks/commit-rules.sh
+check_identity_emails pre-commit
